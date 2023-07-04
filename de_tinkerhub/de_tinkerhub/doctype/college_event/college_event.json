@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{title} {YYYY}",
+ "creation": "2023-07-03 17:44:11.302535",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "event_details_section",
+  "title",
+  "description",
+  "column_break_ngmsz",
+  "category",
+  "location_section",
+  "address",
+  "district",
+  "geo_location",
+  "column_break_fgeki",
+  "city",
+  "state",
+  "date_time_section",
+  "date",
+  "column_break_pem5e",
+  "starting_time",
+  "ending_time",
+  "organizers_list_section",
+  "organizers",
+  "section_break_klmam",
+  "prerequisites",
+  "skills_gained",
+  "status_section",
+  "event_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_details_section",
+   "fieldtype": "Section Break",
+   "label": "Event Details"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_ngmsz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location "
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District"
+  },
+  {
+   "fieldname": "geo_location",
+   "fieldtype": "Geolocation",
+   "label": "Geo Location"
+  },
+  {
+   "fieldname": "column_break_fgeki",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "date_time_section",
+   "fieldtype": "Section Break",
+   "label": "Date & Time"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_pem5e",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "starting_time",
+   "fieldtype": "Time",
+   "label": "Starting Time"
+  },
+  {
+   "fieldname": "ending_time",
+   "fieldtype": "Time",
+   "label": "Ending Time"
+  },
+  {
+   "fieldname": "organizers_list_section",
+   "fieldtype": "Section Break",
+   "label": "Organizers List"
+  },
+  {
+   "fieldname": "organizers",
+   "fieldtype": "Table",
+   "label": "Organizers",
+   "options": "Organizer"
+  },
+  {
+   "fieldname": "section_break_klmam",
+   "fieldtype": "Section Break",
+   "label": "Essentials"
+  },
+  {
+   "fieldname": "prerequisites",
+   "fieldtype": "Data",
+   "label": "Prerequisites"
+  },
+  {
+   "fieldname": "skills_gained",
+   "fieldtype": "Data",
+   "label": "Skills Gained"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "event_status",
+   "fieldtype": "Select",
+   "label": "Event Status",
+   "options": "\nConfirmed\nCancelled\nPostponed\nTo be Confirmed\nUpdated"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-07-04 12:10:37.889390",
+ "modified_by": "Administrator",
+ "module": "De Tinkerhub",
+ "name": "College Event",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Event Admin",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Learner",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
