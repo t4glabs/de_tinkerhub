@@ -8,12 +8,20 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "learner_login_section",
+  "user",
+  "column_break_pn1xt",
+  "college",
+  "learner_details_section",
   "full_name",
   "email",
   "column_break_wsxy9",
   "phone",
-  "section_break_neuvg",
+  "mobile_no",
   "skills",
+  "my_skills",
+  "events_participated_section",
+  "my_events",
   "portfolio_section",
   "portfolio",
   "socials_section",
@@ -23,31 +31,33 @@
  ],
  "fields": [
   {
+   "fetch_from": "user.full_name",
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "label": "Full Name",
+   "read_only": 1
   },
   {
+   "fetch_from": "user.email",
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_wsxy9",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "user.phone",
    "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "Phone"
-  },
-  {
-   "fieldname": "section_break_neuvg",
-   "fieldtype": "Section Break"
+   "fieldtype": "Phone",
+   "label": "Phone",
+   "read_only": 1
   },
   {
    "fieldname": "skills",
-   "fieldtype": "Rating",
+   "fieldtype": "Section Break",
    "label": "Skills"
   },
   {
@@ -57,7 +67,7 @@
   },
   {
    "fieldname": "portfolio",
-   "fieldtype": "Text Editor"
+   "fieldtype": "Data"
   },
   {
    "fieldname": "socials_section",
@@ -77,11 +87,60 @@
    "fieldname": "github",
    "fieldtype": "Data",
    "label": "GitHub"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "college",
+   "fieldtype": "Link",
+   "label": "College",
+   "options": "College"
+  },
+  {
+   "fetch_from": "user.mobile_no",
+   "fieldname": "mobile_no",
+   "fieldtype": "Phone",
+   "label": "Mobile No"
+  },
+  {
+   "fieldname": "learner_login_section",
+   "fieldtype": "Section Break",
+   "label": "Learner Login"
+  },
+  {
+   "fieldname": "column_break_pn1xt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "learner_details_section",
+   "fieldtype": "Section Break",
+   "label": "Learner Details"
+  },
+  {
+   "fieldname": "my_skills",
+   "fieldtype": "Table",
+   "options": "My Skills"
+  },
+  {
+   "fieldname": "events_participated_section",
+   "fieldtype": "Section Break",
+   "label": "Events Participated"
+  },
+  {
+   "fieldname": "my_events",
+   "fieldtype": "Table",
+   "options": "My Events"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-03 17:47:51.641415",
+ "modified": "2023-07-08 15:50:13.049992",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",
@@ -96,7 +155,20 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "Event Admin",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Learner",
+   "select": 1,
    "share": 1,
    "write": 1
   }

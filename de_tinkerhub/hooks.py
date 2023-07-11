@@ -102,13 +102,14 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Event Registration": {
+		"on_submit": "de_tinkerhub.de_tinkerhub.registration_email.send_registration_email"
+	},
+    "TinkerHub Event":{
+        "on_update":"de_tinkerhub.de_tinkerhub.event_update_email.send_event_update_email"
+    }
+}
 
 # Scheduled Tasks
 # ---------------

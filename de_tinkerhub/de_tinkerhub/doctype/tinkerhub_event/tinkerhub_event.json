@@ -25,11 +25,14 @@
   "column_break_pem5e",
   "starting_time",
   "ending_time",
+  "event_sec",
+  "event_session",
   "organizers_list_section",
   "organizers",
   "section_break_klmam",
   "prerequisites",
-  "skills_gained",
+  "skills_gaining",
+  "skills",
   "status_section",
   "event_status"
  ],
@@ -138,11 +141,6 @@
    "label": "Prerequisites"
   },
   {
-   "fieldname": "skills_gained",
-   "fieldtype": "Data",
-   "label": "Skills Gained"
-  },
-  {
    "fieldname": "status_section",
    "fieldtype": "Section Break",
    "label": "Status"
@@ -152,14 +150,35 @@
    "fieldtype": "Select",
    "label": "Event Status",
    "options": "\nConfirmed\nCancelled\nPostponed\nTo be Confirmed\nUpdated"
+  },
+  {
+   "fieldname": "skills_gaining",
+   "fieldtype": "Section Break",
+   "label": "Skills Gaining"
+  },
+  {
+   "fieldname": "skills",
+   "fieldtype": "Table",
+   "label": "Skills",
+   "options": "Skills for the event"
+  },
+  {
+   "fieldname": "event_sec",
+   "fieldtype": "Section Break",
+   "label": "Event Session"
+  },
+  {
+   "fieldname": "event_session",
+   "fieldtype": "Table",
+   "options": "Event Session"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-04 12:10:37.889390",
+ "modified": "2023-07-08 15:48:20.804275",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
- "name": "College Event",
+ "name": "TinkerHub Event",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [

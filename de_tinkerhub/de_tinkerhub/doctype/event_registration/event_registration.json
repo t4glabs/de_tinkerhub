@@ -9,23 +9,30 @@
  "engine": "InnoDB",
  "field_order": [
   "event",
+  "column_break_2ac5z",
   "event_title",
-  "location",
-  "address",
   "candidate_details_section",
-  "name1",
-  "email",
+  "learner",
+  "full_name",
+  "email_id",
+  "address",
   "column_break_lokli",
   "phone",
+  "mobile_no",
+  "skills_from_the_event_section",
+  "skills_gained",
   "custom_registration_questions_section",
-  "questions"
+  "questions",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "event",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Event",
-   "options": "College Event"
+   "options": "TinkerHub Event",
+   "reqd": 1
   },
   {
    "fetch_from": "event.title",
@@ -33,11 +40,6 @@
    "fieldtype": "Data",
    "label": "Event Title",
    "read_only": 1
-  },
-  {
-   "fieldname": "location",
-   "fieldtype": "Section Break",
-   "label": "Location"
   },
   {
    "fieldname": "address",
@@ -50,23 +52,8 @@
    "label": "Candidate Details"
   },
   {
-   "fieldname": "name1",
-   "fieldtype": "Data",
-   "label": "Name"
-  },
-  {
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "label": "Email"
-  },
-  {
    "fieldname": "column_break_lokli",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "Phone"
   },
   {
    "fieldname": "custom_registration_questions_section",
@@ -77,11 +64,65 @@
    "fieldname": "questions",
    "fieldtype": "Small Text",
    "label": "Questions"
+  },
+  {
+   "fieldname": "learner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Learner",
+   "options": "Learner",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2ac5z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Phone",
+   "label": "Mobile No"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Event Admin\");",
+   "fieldname": "skills_from_the_event_section",
+   "fieldtype": "Section Break",
+   "label": "Skills From The Event"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Event Admin\");",
+   "fieldname": "skills_gained",
+   "fieldtype": "Table",
+   "label": "Skills Gained",
+   "options": "Skills from the event"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Event Registration",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-03 17:45:07.366557",
+ "modified": "2023-07-08 16:04:12.821764",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Event Registration",
@@ -96,9 +137,20 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "Event Admin",
+   "select": 1,
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Learner",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",
