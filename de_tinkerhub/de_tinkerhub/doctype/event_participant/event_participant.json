@@ -8,7 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "event_id",
-  "registrant_email"
+  "participant_email"
  ],
  "fields": [
   {
@@ -18,17 +18,17 @@
    "options": "TinkerHub Event"
   },
   {
-   "fieldname": "registrant_email",
+   "fieldname": "participant_email",
    "fieldtype": "Data",
-   "label": "Registrant Email"
+   "label": "Participant Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-16 14:32:14.909876",
+ "modified": "2023-07-16 15:40:38.354214",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
- "name": "Event Registrant",
+ "name": "Event Participant",
  "owner": "Administrator",
  "permissions": [
   {
