@@ -2,9 +2,12 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
+from frappe.website.utils import cleanup_page_name
+from datetime import datetime
 
-class TinkerHubEvent(Document):
+class TinkerHubEvent(WebsiteGenerator):
+	
 	def on_update(self):
 		event_registrations = frappe.get_all("Event Registration", filters={"event": self.name})
 		
@@ -33,3 +36,22 @@ class TinkerHubEvent(Document):
 							registration_doc.skills_gained.remove(skill)
 
 			registration_doc.save()
+
+		# web view route
+		if not self.route:
+			self.route = f"events/{cleanup_page_name(self.name)}"
+
+	# convert time format
+	
+	def get_context(self, context):
+		# convert time to 12 hour format
+		times = [self.starting_time, self.ending_time]
+		for index, time in enumerate(times):
+			time_obj = datetime.strptime(str(time), "%H:%M:%S")
+			context[f"time_{index}"]  = time_obj.strftime("%I:%M %p")
+
+		return context
+
+
+		
+
