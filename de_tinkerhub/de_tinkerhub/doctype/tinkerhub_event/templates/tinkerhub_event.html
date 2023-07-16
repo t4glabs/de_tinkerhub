@@ -1,9 +1,12 @@
 {% extends "templates/web.html" %}
 
 {% block page_content %}
-<h1>{{ title }}</h1> 
+<h1>{{ title }}</h1>
 <h3>{{ date }}</h3> 
 <span>{{ event_time_0 }} to {{ event_time_1 }}</span>
+
+<button>Register Now</button>
+
 <p>{{ description }}</p> 
 
 <!-- sessions -->
@@ -32,6 +35,15 @@
         {% endfor %}
     </div>
 {% endif %}
+
+
+<script>
+    frappe.ready(()=>{
+        
+    })
+    
+</script>
+
 
 {% endblock %}
 
