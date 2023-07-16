@@ -9,6 +9,7 @@ from datetime import datetime
 class TinkerHubEvent(WebsiteGenerator):
 	
 	def on_update(self):
+
 		event_registrations = frappe.get_all("Event Registration", filters={"event": self.name})
 		
 		for event_registration in event_registrations:
@@ -41,15 +42,15 @@ class TinkerHubEvent(WebsiteGenerator):
 		if not self.route:
 			self.route = f"events/{cleanup_page_name(self.name)}"
 
-	# convert time format
 	
 	def get_context(self, context):
 		# convert time to 12 hour format
-		times = [self.starting_time, self.ending_time]
-		for index, time in enumerate(times):
+		event_time = [self.starting_time, self.ending_time]
+		for index, time in enumerate(event_time):
 			time_obj = datetime.strptime(str(time), "%H:%M:%S")
-			context[f"time_{index}"]  = time_obj.strftime("%I:%M %p")
+			context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
+		
 		return context
 
 

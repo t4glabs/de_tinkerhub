@@ -2,9 +2,36 @@
 
 {% block page_content %}
 <h1>{{ title }}</h1> 
-<p>{{ description }}</p> {{ time_0 }} to {{ time_1 }} </p>
+<h3>{{ date }}</h3> 
+<span>{{ event_time_0 }} to {{ event_time_1 }}</span>
+<p>{{ description }}</p> 
 
+<!-- sessions -->
+{% if event_session %}
+<h2>Event Sessions</h2>
+    {% for session in event_session %}
+    <div style="border:1px solid black;">
+        <h3>{{ session.title }}</h3>
+        <p> {{ session.description }}</p>
+        <p>{{session.from_time}}</p>
+    </div>
+    {% endfor %}
+{% endif %}
 
+<!-- organizers -->
+
+{% if organizers %}
+<h2>Event Organizers</h2>
+    <div style="display:flex; margin-right:20px;">
+        {% for organizer in organizers %}
+        <div style="margin-right:20px;">
+            <p>{{organizer.full_name}}</p>
+            <span>{{organizer.email}}</span> <br>
+            <span>{{organizer.mobile}}</span> 
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 {% endblock %}
 
