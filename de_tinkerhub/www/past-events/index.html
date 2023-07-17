@@ -8,7 +8,7 @@
     <h1>Past Events</h1>
     {%- for event in events %}     
         <div>
-            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }} - {{ event.date }}</a>
+            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
         </div>
         
     {% endfor %}

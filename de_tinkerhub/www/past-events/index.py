@@ -1,10 +1,10 @@
 import frappe
 
-cur_user = frappe.session.user
-
 def get_context(context):
 
-    if cur_user=='Guest':
+    cur_user = frappe.session.user
+    
+    if cur_user=="Guest":
         frappe.throw( ("You have to login as a member access this page"), frappe.PermissionError)
     else:
         participated_events = frappe.get_all(
