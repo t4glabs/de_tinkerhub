@@ -7,8 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "event_id",
-  "participant_email"
+  "event_id"
  ],
  "fields": [
   {
@@ -16,16 +15,11 @@
    "fieldtype": "Link",
    "label": "Event ID",
    "options": "TinkerHub Event"
-  },
-  {
-   "fieldname": "participant_email",
-   "fieldtype": "Data",
-   "label": "Participant Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-16 15:40:38.354214",
+ "modified": "2023-07-17 09:25:29.556276",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Event Participant",
@@ -40,6 +34,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Learner",
    "share": 1,
    "write": 1
   }
