@@ -9,5 +9,11 @@ def on_user_signup(doc, method):
             "user": user_id
         })
         learner.save(ignore_permissions=True)
+        # assign learner role
+        user_doc = get_doc('User', user_id)
+        user_doc.append('roles', {
+            'role': 'Learner'
+        })
+        user_doc.save(ignore_permissions=True)
 
 
