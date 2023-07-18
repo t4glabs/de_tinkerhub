@@ -9,5 +9,7 @@ def get_context(context):
                                     'date':  (">", today)
                                 },
                                 fields=['name','title', 'date'])
+    
+    context.show_sidebar = 1
     return context
 

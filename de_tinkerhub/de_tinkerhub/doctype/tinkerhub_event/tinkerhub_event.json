@@ -154,7 +154,7 @@
    "fieldname": "event_status",
    "fieldtype": "Select",
    "label": "Event Status",
-   "options": "\nConfirmed\nCancelled\nPostponed\nTo be Confirmed\nUpdated"
+   "options": "\nConfirmed\nOngoing\nCompleted"
   },
   {
    "fieldname": "skills_gaining",
@@ -199,7 +199,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-16 10:18:32.543269",
+ "modified": "2023-07-17 12:37:11.441026",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",

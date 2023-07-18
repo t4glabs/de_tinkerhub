@@ -85,7 +85,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-05 14:05:51.695408",
+ "modified": "2023-07-18 08:21:58.242979",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "College",
@@ -117,7 +117,9 @@
   }
  ],
  "quick_entry": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "college_name"
 }

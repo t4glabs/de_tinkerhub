@@ -2,6 +2,8 @@ import frappe
 
 def get_context(context):
 
+    context.show_sidebar = 1
+
     cur_user = frappe.session.user
     
     if cur_user=="Guest":

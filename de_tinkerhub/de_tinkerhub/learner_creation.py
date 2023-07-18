@@ -6,7 +6,8 @@ def on_user_signup(doc, method):
     if not frappe.db.exists({"doctype":"Learner","user": user_id}):
         learner = get_doc({
             "doctype": "Learner",
-            "user": user_id
+            "user": user_id,
+            "is_published": 1
         })
         learner.save(ignore_permissions=True)
         # assign learner role

@@ -50,6 +50,7 @@ class TinkerHubEvent(WebsiteGenerator):
 			time_obj = datetime.strptime(str(time), "%H:%M:%S")
 			context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
+		context.show_sidebar=1
 		
 		return context
 
