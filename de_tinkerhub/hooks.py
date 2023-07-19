@@ -1,5 +1,5 @@
 from . import __version__ as app_version
-
+import frappe
 app_name = "de_tinkerhub"
 app_title = "De Tinkerhub"
 app_publisher = "D-codE"
@@ -203,3 +203,11 @@ doc_events = {
 # auth_hooks = [
 #	"de_tinkerhub.auth.validate"
 # ]
+
+portal_menu_items = [ 
+    {"title": "Public Profile", "route": f"/learner/{frappe.session.user}", "role": "Learner"},
+    {"title": "Upcoming Events", "route": "/upcoming-events", "role": "All"},
+    {"title": "Past Events", "route": "/past-events", "role": "Learner"},
+    {"title": "My Profile", "route": "/learner-profile/new", "role": "Learner"},
+    {"title": "Create Event", "route": "/app/tinkerhub-event/new-tinkerhub-event", "role": "Event Admin"}
+]  

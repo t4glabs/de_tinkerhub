@@ -10,6 +10,32 @@ class TinkerHubEvent(WebsiteGenerator):
 	
 	def on_update(self):
 
+		if self.feedback_question != None:
+			if not frappe.db.exists("Feedback Submission", self.name):
+				feedback_question = frappe.get_doc({
+					"doctype": "Feedback Submission",
+					"event_id": self.name,
+					"question": self.feedback_question
+				})
+				# add invoice record to databse
+				feedback_question.insert(ignore_permissions = True).save()
+				frappe.db.commit()
+			elif frappe.db.exists("Feedback Submission", self.name):
+				frappe.db.set_value("Feedback Submission", self.name, "question", self.feedback_question)
+		
+		if self.assignment_question != None:
+			if not frappe.db.exists("Assignment Submission", self.name):
+				assignment_question = frappe.get_doc({
+					"doctype": "Assignment Submission",
+					"event_id": self.name,
+					"question": self.assignment_question
+				})
+				# add invoice record to databse
+				assignment_question.insert(ignore_permissions = True).save()
+				frappe.db.commit()
+			elif frappe.db.exists("Assignment Submission", self.name):
+				frappe.db.set_value("Assignment Submission", self.name, "question", self.assignment_question)
+
 		event_registrations = frappe.get_all("Event Registration", filters={"event": self.name})
 		
 		for event_registration in event_registrations:
@@ -22,6 +48,8 @@ class TinkerHubEvent(WebsiteGenerator):
 						"skill": skill.skill
 					})
 			registration_doc.save()
+
+
 		
 	def validate(self):
 		event_registrations = frappe.get_all("Event Registration", filters={"event": self.name})
@@ -44,15 +72,74 @@ class TinkerHubEvent(WebsiteGenerator):
 
 	
 	def get_context(self, context):
+
+		cur_user = frappe.session.user
+		if cur_user == 'Guest':
+			is_admin = False
+			is_learner = False
+			is_guest = True
+		elif cur_user == 'Administrator':
+			is_admin = True
+			is_learner = False
+			is_guest = False
+		else:
+			is_admin = False
+			is_learner = True
+			is_guest = False
+
+		
+		if is_learner:
+			participated_events = frappe.get_all(
+				'Event Participant',
+				filters={
+					'learner_email': cur_user
+				},
+				fields=['event_id'],
+				as_list=True 
+			)
+			event_ids = [event[0] for event in participated_events]
+			event = self.name
+			if event in event_ids:
+				participant = True
+			elif not event in event_ids:
+				participant = False
+			else:
+				participant = False
+		
+		if participant:
+			if self.event_status == 'Ongoing':
+				if self.assignment_question:
+					context.assignment = True
+				else:
+					context.assignment = False
+			else:
+				context.assignment = False
+			
+			if self.event_status == 'Completed':
+				if self.assignment_question:
+					context.feedback = True
+				else:
+					context.feedback = False
+			else:
+				context.feedback = False
+
+		
+
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
 		for index, time in enumerate(event_time):
 			time_obj = datetime.strptime(str(time), "%H:%M:%S")
 			context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
+		context.participant = participant
+		context.is_guest = is_guest
+		context.is_learner = is_learner
+		context.is_admin = is_admin
 		context.show_sidebar=1
 		
+
 		return context
+
 
 
 		

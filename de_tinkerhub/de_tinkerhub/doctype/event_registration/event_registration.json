@@ -15,23 +15,17 @@
   "learner",
   "full_name",
   "email_id",
-  "address",
   "column_break_lokli",
-  "phone",
   "mobile_no",
   "skills_from_the_event_section",
-  "skills_gained",
-  "custom_registration_questions_section",
-  "questions",
-  "amended_from"
+  "skills_gained"
  ],
  "fields": [
   {
    "fieldname": "event",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Event",
-   "options": "TinkerHub Event",
    "reqd": 1
   },
   {
@@ -40,11 +34,6 @@
    "fieldtype": "Data",
    "label": "Event Title",
    "read_only": 1
-  },
-  {
-   "fieldname": "address",
-   "fieldtype": "Small Text",
-   "label": "Address"
   },
   {
    "fieldname": "candidate_details_section",
@@ -56,22 +45,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "custom_registration_questions_section",
-   "fieldtype": "Section Break",
-   "label": "Custom Registration Questions"
-  },
-  {
-   "fieldname": "questions",
-   "fieldtype": "Small Text",
-   "label": "Questions"
-  },
-  {
    "fieldname": "learner",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Learner",
-   "options": "Learner",
-   "reqd": 1
+   "options": "Learner"
   },
   {
    "fieldname": "column_break_2ac5z",
@@ -81,11 +59,6 @@
    "fieldname": "full_name",
    "fieldtype": "Data",
    "label": "Full Name"
-  },
-  {
-   "fieldname": "phone",
-   "fieldtype": "Phone",
-   "label": "Phone"
   },
   {
    "fieldname": "mobile_no",
@@ -109,20 +82,11 @@
    "fieldname": "email_id",
    "fieldtype": "Data",
    "label": "Email Id"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Event Registration",
-   "print_hide": 1,
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-08 16:04:12.821764",
+ "modified": "2023-07-19 23:48:17.853737",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Event Registration",

@@ -12,7 +12,7 @@ def get_context(context):
         participated_events = frappe.get_all(
             'Event Participant',
             filters={
-                'participant_email': cur_user
+                'learner_email': cur_user
             },
             fields=['event_id'],
             as_list=True 

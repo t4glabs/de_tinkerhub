@@ -38,7 +38,11 @@
   "event_status",
   "publish_this_event_column",
   "is_published",
-  "route"
+  "route",
+  "feedback_question_section",
+  "feedback_question",
+  "column_break_xhfqu",
+  "assignment_question"
  ],
  "fields": [
   {
@@ -193,13 +197,32 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Route"
+  },
+  {
+   "fieldname": "feedback_question_section",
+   "fieldtype": "Section Break",
+   "label": "Feedback/Assgnkment Question"
+  },
+  {
+   "fieldname": "feedback_question",
+   "fieldtype": "Small Text",
+   "label": "Enter feedback question"
+  },
+  {
+   "fieldname": "assignment_question",
+   "fieldtype": "Small Text",
+   "label": "Enter Assignment Question"
+  },
+  {
+   "fieldname": "column_break_xhfqu",
+   "fieldtype": "Column Break"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-17 12:37:11.441026",
+ "modified": "2023-07-19 22:57:04.838858",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",
