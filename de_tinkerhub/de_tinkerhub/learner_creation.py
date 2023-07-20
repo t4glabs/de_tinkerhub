@@ -16,5 +16,6 @@ def on_user_signup(doc, method):
             'role': 'Learner'
         })
         user_doc.save(ignore_permissions=True)
+        frappe.db.commit()
 
 

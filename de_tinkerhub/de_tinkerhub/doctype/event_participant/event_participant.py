@@ -6,10 +6,11 @@ from frappe.model.document import Document
 
 class EventParticipant(Document):
 	def on_update(self):
-		learner = frappe.get_doc("Learner", self.learner_email)
-		existing_event = [event.event for event in learner.my_events]
+		if frappe.db.exists('Learner', self.learner_email):
+			learner = frappe.get_doc("Learner", self.learner_email)
+			existing_event = [event.event for event in learner.my_events]
 
-		if not self.event_id in existing_event:
-			learner_event=learner.append("my_events")
-			learner_event.event= self.event_id
-		learner.save()
+			if not self.event_id in existing_event:
+				learner_event=learner.append("my_events")
+				learner_event.event= self.event_id
+			learner.save()

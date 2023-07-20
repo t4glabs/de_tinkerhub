@@ -35,7 +35,7 @@
   "skills_gaining",
   "skills",
   "status_section",
-  "event_status",
+  "status",
   "publish_this_event_column",
   "is_published",
   "route",
@@ -152,13 +152,7 @@
   {
    "fieldname": "status_section",
    "fieldtype": "Section Break",
-   "label": "Status"
-  },
-  {
-   "fieldname": "event_status",
-   "fieldtype": "Select",
-   "label": "Event Status",
-   "options": "\nConfirmed\nOngoing\nCompleted"
+   "label": "Event Status"
   },
   {
    "fieldname": "skills_gaining",
@@ -216,13 +210,19 @@
   {
    "fieldname": "column_break_xhfqu",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nConfirmed\nOngoing\nCompleted"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-20 04:58:32.803779",
+ "modified": "2023-07-20 14:22:29.505461",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",

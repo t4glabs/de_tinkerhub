@@ -7,16 +7,27 @@
 </div>
 
 {% block page_content %}
-
+{{text}}
 <h1>{{ title }}</h1>
 <h3>{{ date }}</h3> 
+
 <span>{{ event_time_0 }} to {{ event_time_1 }}</span>
 
-{% if assignment %}
-    <button><a href="{{frappe.utils.get_url()}}/assignment-submission/{{name}}/edit">Provide feedback</a></button>
-{% endif %}
+{% if participant and assignment_question and status=='Ongoing' %}
 
+<button><a href="{{frappe.utils.get_url()}}/assignment-submission/{{name}}/edit">Submit Assignment</a></button>
+
+{%endif%}
+
+{% if participant and feedback_question and status=='Completed' %}
+
+<button><a href="{{frappe.utils.get_url()}}/feedback-form/{{name}}/edit">Submit Assignment</a></button>
+
+{%endif%}
+
+{% if status != "Completed" %}
 <button class="register-btn" onclick="show_form()">Register Now</button>
+{% endif %}
 
 <p>{{ description }}</p> 
 

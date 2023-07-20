@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-07-18 10:38:09.219124",
+ "modified": "2023-07-20 17:07:33.088076",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "learner-registration",
@@ -34,14 +34,13 @@
  "web_form_fields": [
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "user",
-   "fieldtype": "Link",
+   "fieldname": "email",
+   "fieldtype": "Data",
    "hidden": 0,
    "label": "Email",
    "max_length": 0,
    "max_value": 0,
-   "options": "User",
-   "read_only": 0,
+   "read_only": 1,
    "reqd": 1,
    "show_in_filter": 0
   },

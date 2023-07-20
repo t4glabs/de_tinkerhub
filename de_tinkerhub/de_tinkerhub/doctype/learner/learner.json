@@ -2,8 +2,8 @@
  "actions": [],
  "allow_guest_to_view": 1,
  "allow_rename": 1,
- "autoname": "format:{email}",
- "creation": "2023-07-03 17:47:51.641415",
+ "autoname": "format:{user}",
+ "creation": "2023-07-20 17:43:19.812713",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -11,6 +11,7 @@
  "field_order": [
   "user",
   "email",
+  "learner_id",
   "column_break_u9i2u",
   "full_name",
   "mobile_no",
@@ -40,6 +41,33 @@
  ],
  "fields": [
   {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "user.email",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "learner_id",
+   "fieldtype": "Data",
+   "label": "Learner ID"
+  },
+  {
+   "fieldname": "column_break_u9i2u",
+   "fieldtype": "Column Break"
+  },
+  {
    "fetch_from": "user.full_name",
    "fetch_if_empty": 1,
    "fieldname": "full_name",
@@ -47,20 +75,80 @@
    "label": "Full Name"
   },
   {
-   "fetch_from": "user.email",
-   "fieldname": "email",
+   "fetch_if_empty": 1,
+   "fieldname": "mobile_no",
    "fieldtype": "Data",
-   "label": "Email",
-   "read_only": 1
+   "label": "Mobile No"
+  },
+  {
+   "fieldname": "learner_details_section",
+   "fieldtype": "Section Break",
+   "label": "Learner Details"
+  },
+  {
+   "fieldname": "college_student",
+   "fieldtype": "Select",
+   "label": "Are you a college student?",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_pn1xt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.college_student=='Yes';",
+   "fieldname": "college",
+   "fieldtype": "Link",
+   "label": "College",
+   "options": "College"
+  },
+  {
+   "fieldname": "section_break_bwons",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "is_working",
+   "fieldtype": "Select",
+   "label": "Are you currently working?",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_2g8po",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_working == 'Yes';",
+   "fieldname": "your_role",
+   "fieldtype": "Data",
+   "label": "Your Role"
   },
   {
    "fieldname": "column_break_wsxy9",
    "fieldtype": "Column Break"
   },
   {
+   "fieldname": "section_break_sayti",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "skills",
    "fieldtype": "Section Break",
    "label": "Skills"
+  },
+  {
+   "fieldname": "my_skills",
+   "fieldtype": "Table",
+   "options": "My Skills"
+  },
+  {
+   "fieldname": "events_participated_section",
+   "fieldtype": "Section Break",
+   "label": "Events Participated"
+  },
+  {
+   "fieldname": "my_events",
+   "fieldtype": "Table",
+   "options": "My Events"
   },
   {
    "fieldname": "portfolio_section",
@@ -91,82 +179,6 @@
    "label": "GitHub"
   },
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "User",
-   "options": "User",
-   "reqd": 1
-  },
-  {
-   "depends_on": "eval:doc.college_student=='Yes';",
-   "fieldname": "college",
-   "fieldtype": "Link",
-   "label": "College",
-   "options": "College"
-  },
-  {
-   "fetch_from": "user.mobile_no",
-   "fetch_if_empty": 1,
-   "fieldname": "mobile_no",
-   "fieldtype": "Data",
-   "label": "Mobile No"
-  },
-  {
-   "fieldname": "column_break_pn1xt",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "learner_details_section",
-   "fieldtype": "Section Break",
-   "label": "Learner Details"
-  },
-  {
-   "fieldname": "my_skills",
-   "fieldtype": "Table",
-   "options": "My Skills"
-  },
-  {
-   "fieldname": "events_participated_section",
-   "fieldtype": "Section Break",
-   "label": "Events Participated"
-  },
-  {
-   "fieldname": "my_events",
-   "fieldtype": "Table",
-   "options": "My Events"
-  },
-  {
-   "fieldname": "college_student",
-   "fieldtype": "Select",
-   "label": "Are you a college student?",
-   "options": "\nYes\nNo"
-  },
-  {
-   "fieldname": "section_break_bwons",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "is_working",
-   "fieldtype": "Select",
-   "label": "Are you currently working?",
-   "options": "\nYes\nNo"
-  },
-  {
-   "depends_on": "eval:doc.is_working == 'Yes';",
-   "fieldname": "your_role",
-   "fieldtype": "Data",
-   "label": "Your Role"
-  },
-  {
-   "fieldname": "column_break_2g8po",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_sayti",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "publish_learner_page_section",
    "fieldtype": "Section Break",
    "label": "Publish Learner Page"
@@ -181,17 +193,13 @@
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
-  },
-  {
-   "fieldname": "column_break_u9i2u",
-   "fieldtype": "Column Break"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-20 13:31:32.706156",
+ "modified": "2023-07-20 17:51:14.062502",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",
