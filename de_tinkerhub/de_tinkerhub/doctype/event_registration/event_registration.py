@@ -13,37 +13,28 @@ class EventRegistration(Document):
 			})
 			
 	def on_update(self):
-		learner = frappe.get_doc("Learner", self.learner)
-		existing_skills = [skill.skill for skill in learner.my_skills]
+		if frappe.db.exists("Learner", self.email):
+			learner = frappe.get_doc("Learner", self.email)
+			existing_skills = [skill.skill for skill in learner.my_skills]
 
-		for skills_gained in self.skills_gained:
-			if skills_gained.skill in existing_skills:
-				if not skills_gained.gained == 1:
-					for learner_skill in learner.my_skills:
-						if learner_skill.skill == skills_gained.skill:
-							learner.my_skills.remove(learner_skill)
+			for skills_gained in self.skills_gained:
+				if skills_gained.skill in existing_skills:
+					if not skills_gained.gained == 1:
+						for learner_skill in learner.my_skills:
+							if learner_skill.skill == skills_gained.skill:
+								learner.my_skills.remove(learner_skill)
 
-			elif skills_gained.gained == 1:
-				learner_skill = learner.append("my_skills")
-				learner_skill.skill = skills_gained.skill
-				learner_skill.event = self.event
+				elif skills_gained.gained == 1:
+					learner_skill = learner.append("my_skills")
+					learner_skill.skill = skills_gained.skill
+					learner_skill.event = self.event
 
-		learner.save()
-		# learner = frappe.get_doc("Learner", self.learner)
-		existing_event = [event.event for event in learner.my_events]
+			learner.save()
+			existing_event = [event.event for event in learner.my_events]
 
-		if not self.event in existing_event:
-			learner_event=learner.append("my_events")
-			learner_event.event = self.event
-		learner.save()
-  
-		
+			if not self.event in existing_event:
+				learner_event=learner.append("my_events")
+				learner_event.event = self.event
+			learner.save()
 	
-	def my_events(self):
-		learner = frappe.get_doc("Learner", self.learner)
-		existing_event = [event.event for event in learner.my_events]
-
-		if not self.event in existing_event:
-			learner_event=learner.append("my_events")
-			learner_event.event = self.event
-		learner.save()
+		

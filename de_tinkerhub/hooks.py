@@ -16,7 +16,7 @@ app_license = "MIT"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/de_tinkerhub/css/de_tinkerhub.css"
-# web_include_js = "/assets/de_tinkerhub/js/de_tinkerhub.js"
+web_include_js = "/assets/de_tinkerhub/js/de_tinkerhub.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "de_tinkerhub/public/scss/website"

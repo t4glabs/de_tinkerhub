@@ -12,17 +12,11 @@
 <h3>{{ date }}</h3> 
 <span>{{ event_time_0 }} to {{ event_time_1 }}</span>
 
-{% if feedback %}
-    <button><a href="{{frappe.utils.get_url()}}/feedback-form/{{name}}/edit">Provide feedback</a></button>
-{% endif %}
-
 {% if assignment %}
-        <button><a href="{{frappe.utils.get_url()}}/assignment-submission/{{name}}/edit">Provide feedback</a></button>
+    <button><a href="{{frappe.utils.get_url()}}/assignment-submission/{{name}}/edit">Provide feedback</a></button>
 {% endif %}
 
-{% if is_learner %}
-<button onclick="learner_registrant()">Register Now</button>
-{% endif %}
+<button class="register-btn" onclick="show_form()">Register Now</button>
 
 <p>{{ description }}</p> 
 
@@ -51,31 +45,11 @@
         </div>
         {% endfor %}
     </div>
+    
 {% endif %}
 
-<script>
-    frappe.ready(()=>{
-        learner_registrant = () => {
-            let url = window.location.href;
-            let last = url.split('/')[4]
-
-            frappe.call({
-			method: 'de_tinkerhub.services.rest.learner_registrant',
-			args: {
-				'event': last,
-				'learner' : frappe.session.user,
-				'email' : frappe.session.user
-			},
-			callback: r => {
-
-			}
-		})
-        }
-    })
-    
-</script>
-
-
 {% endblock %}
-
+{%- block script %}
+    {{ include_script('controls.bundle.js') }}
+{% endblock %}
 <!-- this is a sample default web page template -->

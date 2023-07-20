@@ -9,20 +9,8 @@ from datetime import datetime
 class TinkerHubEvent(WebsiteGenerator):
 	
 	def on_update(self):
-
-		if self.feedback_question != None:
-			if not frappe.db.exists("Feedback Submission", self.name):
-				feedback_question = frappe.get_doc({
-					"doctype": "Feedback Submission",
-					"event_id": self.name,
-					"question": self.feedback_question
-				})
-				# add invoice record to databse
-				feedback_question.insert(ignore_permissions = True).save()
-				frappe.db.commit()
-			elif frappe.db.exists("Feedback Submission", self.name):
-				frappe.db.set_value("Feedback Submission", self.name, "question", self.feedback_question)
-		
+		cd = frappe.db.get_value('Learner', f'{frappe.session.user}' 'my_events')
+		print(f'\n\n\n {cd} \n\n\n')
 		if self.assignment_question != None:
 			if not frappe.db.exists("Assignment Submission", self.name):
 				assignment_question = frappe.get_doc({
@@ -106,24 +94,22 @@ class TinkerHubEvent(WebsiteGenerator):
 			else:
 				participant = False
 		
-		if participant:
-			if self.event_status == 'Ongoing':
-				if self.assignment_question:
-					context.assignment = True
-				else:
-					context.assignment = False
-			else:
-				context.assignment = False
+		# if participant:
+		# 	if self.event_status == 'Ongoing':
+		# 		if self.assignment_question:
+		# 			context.assignment = True
+		# 		else:
+		# 			context.assignment = False
+		# 	else:
+		# 		context.assignment = False
 			
-			if self.event_status == 'Completed':
-				if self.assignment_question:
-					context.feedback = True
-				else:
-					context.feedback = False
-			else:
-				context.feedback = False
-
-		
+		# 	if self.event_status == 'Completed':
+		# 		if self.assignment_question:
+		# 			context.feedback = True
+		# 		else:
+		# 			context.feedback = False
+		# 	else:
+		# 		context.feedback = False
 
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
@@ -131,7 +117,7 @@ class TinkerHubEvent(WebsiteGenerator):
 			time_obj = datetime.strptime(str(time), "%H:%M:%S")
 			context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
-		context.participant = participant
+		# context.participant = participant
 		context.is_guest = is_guest
 		context.is_learner = is_learner
 		context.is_admin = is_admin
@@ -144,3 +130,21 @@ class TinkerHubEvent(WebsiteGenerator):
 
 		
 
+# feedback question
+# if self.feedback_question != None:
+# 			if not frappe.db.exists("Feedback Submission", self.name):
+# 				feedback_question = frappe.get_doc({
+# 					"doctype": "Feedback Submission",
+# 					"event_id": self.name,
+# 					"question": self.feedback_question
+# 				})
+# 				# add invoice record to databse
+# 				feedback_question.insert(ignore_permissions = True).save()
+# 				frappe.db.commit()
+# 			elif frappe.db.exists("Feedback Submission", self.name):
+# 				frappe.db.set_value("Feedback Submission", self.name, "question", self.feedback_question)
+#
+# jinjs feedback
+# {% if feedback %}
+#     <button><a href="{{frappe.utils.get_url()}}/feedback-form/{{name}}/edit">Provide feedback</a></button>
+# {% endif %}

@@ -9,13 +9,11 @@
  "engine": "InnoDB",
  "field_order": [
   "event",
-  "column_break_2ac5z",
   "event_title",
   "candidate_details_section",
-  "learner",
   "full_name",
-  "email_id",
   "column_break_lokli",
+  "email",
   "mobile_no",
   "skills_from_the_event_section",
   "skills_gained"
@@ -23,9 +21,10 @@
  "fields": [
   {
    "fieldname": "event",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Event",
+   "options": "TinkerHub Event",
    "reqd": 1
   },
   {
@@ -45,25 +44,17 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "learner",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Learner",
-   "options": "Learner"
-  },
-  {
-   "fieldname": "column_break_2ac5z",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "label": "Full Name",
+   "reqd": 1
   },
   {
+   "fetch_from": "learner.mobile_no",
    "fieldname": "mobile_no",
-   "fieldtype": "Phone",
-   "label": "Mobile No"
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "reqd": 1
   },
   {
    "depends_on": "eval:frappe.user.has_role(\"Event Admin\");",
@@ -79,14 +70,16 @@
    "options": "Skills from the event"
   },
   {
-   "fieldname": "email_id",
+   "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email Id"
+   "in_list_view": 1,
+   "label": "Email",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-19 23:48:17.853737",
+ "modified": "2023-07-20 13:45:17.278587",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Event Registration",
@@ -107,6 +100,7 @@
    "write": 1
   },
   {
+   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -114,7 +108,33 @@
    "report": 1,
    "role": "Learner",
    "select": 1,
-   "share": 1
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "share": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",

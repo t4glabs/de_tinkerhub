@@ -1,18 +1,16 @@
 import frappe
 
-@frappe.whitelist()
-def learner_registrant(event, learner, email):
+@frappe.whitelist(allow_guest=True)
+def event_registration(event, email, full_name, mobile_no):
 
-    # print(f'\n\n\n\n { data } \n\n\n\n')
-
-    # learner = frappe.db.get_value('User', f'{ email }', ['full_name'])
 
     registration = frappe.get_doc({
         "doctype": "Event Registration",
-        "email": f'{email}',
-        "learner": f'{learner}',
-        "event": f'{event}'
+        "event":  event,
+        "email": email,   
+        "full_name": full_name,
+        "mobile_no": mobile_no
     })
-    # add invoice record to databse
+
     registration.insert(ignore_permissions = True).save()
     # frappe.db.commit()

@@ -2,7 +2,7 @@
  "actions": [],
  "allow_guest_to_view": 1,
  "allow_rename": 1,
- "autoname": "format:{user}",
+ "autoname": "format:{email}",
  "creation": "2023-07-03 17:47:51.641415",
  "default_view": "List",
  "doctype": "DocType",
@@ -109,7 +109,7 @@
    "fetch_from": "user.mobile_no",
    "fetch_if_empty": 1,
    "fieldname": "mobile_no",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "Mobile No"
   },
   {
@@ -191,7 +191,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-18 22:31:11.018762",
+ "modified": "2023-07-20 13:31:32.706156",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",
@@ -219,6 +219,19 @@
    "read": 1,
    "report": 1,
    "role": "Learner",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
    "select": 1,
    "share": 1,
    "write": 1
