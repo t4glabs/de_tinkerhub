@@ -86,7 +86,8 @@ class TinkerHubEvent(WebsiteGenerator):
 				user_events = [event.event for event in learner.my_events]
 				if cur_event in user_events:
 					participant = True
-		
+			else:
+				participant = False
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
 		for index, time in enumerate(event_time):
@@ -103,42 +104,3 @@ class TinkerHubEvent(WebsiteGenerator):
 		return context
 
 		
-		# if participant:
-		# 	if self.event_status == 'Ongoing':
-		# 		if self.assignment_question:
-		# 			context.assignment = True
-		# 		else:
-		# 			context.assignment = False
-		# 	else:
-		# 		context.assignment = False
-			
-		# 	if self.event_status == 'Completed':
-		# 		if self.assignment_question:
-		# 			context.feedback = True
-		# 		else:
-		# 			context.feedback = False
-		# 	else:
-		# 		context.feedback = False
-
-
-
-		
-
-# feedback question
-# if self.feedback_question != None:
-# 			if not frappe.db.exists("Feedback Submission", self.name):
-# 				feedback_question = frappe.get_doc({
-# 					"doctype": "Feedback Submission",
-# 					"event_id": self.name,
-# 					"question": self.feedback_question
-# 				})
-# 				# add invoice record to databse
-# 				feedback_question.insert(ignore_permissions = True).save()
-# 				frappe.db.commit()
-# 			elif frappe.db.exists("Feedback Submission", self.name):
-# 				frappe.db.set_value("Feedback Submission", self.name, "question", self.feedback_question)
-#
-# jinjs feedback
-# {% if feedback %}
-#     <button><a href="{{frappe.utils.get_url()}}/feedback-form/{{name}}/edit">Provide feedback</a></button>
-# {% endif %}
