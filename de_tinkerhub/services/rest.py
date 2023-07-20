@@ -14,3 +14,7 @@ def event_registration(event, email, full_name, mobile_no):
 
     registration.insert(ignore_permissions = True).save()
     # frappe.db.commit()
+    frappe.msgprint(
+        msg='Thank you for registering!',
+        title='Success'
+    )

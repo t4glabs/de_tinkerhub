@@ -28,7 +28,6 @@ event_registration = (data) => {
         'mobile_no': data.contact
     },
     callback: r => {
-
     }
 })
 }
