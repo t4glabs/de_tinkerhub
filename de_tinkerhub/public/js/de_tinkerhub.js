@@ -38,7 +38,7 @@ let assignment_dialog = (question) => {
     let fields = [{
             label: question,
             fieldname: 'response',
-            fieldtype: 'Attach'
+            fieldtype: 'Data'
         }]
     let feedback_dialog = new frappe.ui.Dialog({
         title: "Assignment Submission",
@@ -129,8 +129,6 @@ const registration_fields = () => {
 const feedback_fields = (q) => {
     let url = window.location.href,
         event = url.split('/')[4]
-
-
 	let dialog_fields = [
         {
             label: q,
@@ -138,6 +136,5 @@ const feedback_fields = (q) => {
             fieldtype: 'Small Text'
         }
     ]
-
 	return dialog_fields;
 };

@@ -12,7 +12,7 @@
  "is_hidden": 0,
  "label": "Events",
  "links": [],
- "modified": "2023-07-09 00:00:33.921641",
+ "modified": "2023-07-21 07:02:02.206423",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Events",
@@ -54,6 +54,18 @@
    "doc_view": "List",
    "label": "College",
    "link_to": "College",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Event Participants",
+   "link_to": "Event Participants",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Assignement Submission",
+   "link_to": "Assignment Submission",
    "type": "DocType"
   }
  ],

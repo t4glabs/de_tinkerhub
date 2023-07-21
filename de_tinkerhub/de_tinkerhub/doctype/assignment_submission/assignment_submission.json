@@ -38,7 +38,7 @@
   },
   {
    "fieldname": "user_response",
-   "fieldtype": "Attach",
+   "fieldtype": "Data",
    "label": "User Response"
   },
   {
@@ -51,7 +51,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-21 06:05:51.801481",
+ "modified": "2023-07-21 07:02:34.058056",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Assignment Submission",
