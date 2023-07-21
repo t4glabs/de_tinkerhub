@@ -5,12 +5,12 @@ def send_event_update_email(doc, method):
     registrations = frappe.get_all(
         "Event Registration",
         filters={"event": event_name},
-        fields=["learner"]
+        fields=["email"]
     )
     subject = "Event Update: {}".format(event_name)
     message = "Dear learner, the event '{}' has been updated.".format(event_name)
     
     for registration in registrations:
-        learner = frappe.get_doc("Learner", registration.learner)
+        learner = frappe.get_doc("Learner", registration.email)
         email = learner.email
-        frappe.sendmail(recipients=email, subject=subject, message=message)
+        # frappe.sendmail(recipients=email, subject=subject, message=message)

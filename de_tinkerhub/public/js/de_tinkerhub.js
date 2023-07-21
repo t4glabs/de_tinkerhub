@@ -5,8 +5,7 @@ let show_form = () => {
         title: "Event Registration",
         fields: fields,
         primary_action: data => {
-            event_registration(data)
-            console.log(data)
+            event_registration(data)  
             question_dialog.hide()
         }
     });
@@ -14,18 +13,75 @@ let show_form = () => {
     question_dialog.show();
 };
 
+let feedback_dialog = (question) => {
+
+    let fields = [{
+            label: question,
+            fieldname: 'response',
+            fieldtype: 'Small Text'
+        }]
+    let feedback_dialog = new frappe.ui.Dialog({
+        title: "Event Feedback",
+        fields: fields,
+        primary_action: data => {
+            submit_feedback(data, question)  
+            console.log(data)
+            feedback_dialog.hide()
+        }
+    });
+
+    feedback_dialog.show();
+};
+
+let assignment_dialog = (question) => {
+
+    let fields = [{
+            label: question,
+            fieldname: 'response',
+            fieldtype: 'Attach'
+        }]
+    let feedback_dialog = new frappe.ui.Dialog({
+        title: "Assignment Submission",
+        fields: fields,
+        primary_action: data => {
+            submit_assignment(data, question)  
+            console.log(data)
+            feedback_dialog.hide()
+        }
+    });
+
+    feedback_dialog.show();
+};
+
 
 event_registration = (data) => {
     let url = window.location.href,
-        last = url.split('/')[4]
+    event = url.split('/')[4]
 
     frappe.call({
     method: 'de_tinkerhub.services.rest.event_registration',
     args: {
-        'event': last,
+        'event': event,
         'email' : data.email,
         'full_name': data.full_name,
         'mobile_no': data.contact
+    },
+    callback: r => {
+    }
+})
+}
+
+submit_assignment = (data, question) => {
+    let url = window.location.href,
+    event = url.split('/')[4]
+
+    frappe.call({
+    method: 'de_tinkerhub.services.rest.submit_assignment',
+    args: {
+        'event': event,
+        'learner': frappe.session.user,
+        'question': question,
+        'response': data.response
     },
     callback: r => {
     }
@@ -70,3 +126,18 @@ const registration_fields = () => {
 	return dialog_fields;
 };
 
+const feedback_fields = (q) => {
+    let url = window.location.href,
+        event = url.split('/')[4]
+
+
+	let dialog_fields = [
+        {
+            label: q,
+            fieldname: 'response',
+            fieldtype: 'Small Text'
+        }
+    ]
+
+	return dialog_fields;
+};

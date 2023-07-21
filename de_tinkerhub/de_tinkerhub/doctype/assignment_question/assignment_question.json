@@ -1,57 +1,41 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2023-07-19 15:30:32.631617",
+ "autoname": "field:event",
+ "creation": "2023-07-21 01:12:09.020345",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "event",
-  "column_break_zaaoc",
-  "learner",
-  "section_break_esajt",
-  "question",
-  "user_response"
+  "question"
  ],
  "fields": [
   {
-   "fieldname": "column_break_zaaoc",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "learner",
+   "fieldname": "event",
    "fieldtype": "Link",
-   "label": "Learner",
-   "options": "Learner"
-  },
-  {
-   "fieldname": "section_break_esajt",
-   "fieldtype": "Section Break"
+   "in_list_view": 1,
+   "label": "Event",
+   "options": "TinkerHub Event",
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "question",
-   "fieldtype": "Small Text",
-   "label": "Question"
-  },
-  {
-   "fieldname": "user_response",
-   "fieldtype": "Small Text",
-   "label": "User Response"
-  },
-  {
-   "fieldname": "event",
-   "fieldtype": "Link",
-   "label": "Event",
-   "options": "TinkerHub Event"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Question",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-21 06:41:41.796233",
+ "modified": "2023-07-21 01:41:45.367232",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
- "name": "Feedback Submission",
+ "name": "Assignment Question",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -74,9 +58,20 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Learner",
+   "role": "Event Admin",
+   "select": 1,
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Learner",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",

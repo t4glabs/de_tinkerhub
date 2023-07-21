@@ -15,21 +15,23 @@
 
 {% if participant and assignment_question and status=='Ongoing' %}
 
-<button><a href="{{frappe.utils.get_url()}}/assignment-submission/{{name}}/edit">Submit Assignment</a></button>
+<!-- <button onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button> -->
 
 {%endif%}
 
 {% if participant and feedback_question and status=='Completed' %}
 
-<button><a href="{{frappe.utils.get_url()}}/feedback-form/{{name}}/edit">Submit Assignment</a></button>
+<button onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
 
 {%endif%}
 
-{% if status != "Completed" %}
+{% if status == "Confirmed" %}
 <button class="register-btn" onclick="show_form()">Register Now</button>
 {% endif %}
 
+{% if description %}
 <p>{{ description }}</p> 
+{% endif %}
 
 <!-- sessions -->
 {% if event_session %}
@@ -52,7 +54,9 @@
         <div style="margin-right:20px;">
             <p>{{organizer.full_name}}</p>
             <span>{{organizer.email}}</span> <br>
+            {% if organizer.mobile %}
             <span>{{organizer.mobile}}</span> 
+            {% endif %}
         </div>
         {% endfor %}
     </div>

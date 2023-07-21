@@ -9,23 +9,8 @@ from datetime import datetime
 class TinkerHubEvent(WebsiteGenerator):
 	
 	def on_update(self):
-		cd = frappe.db.get_value('Learner', f'{frappe.session.user}' 'my_events')
-		print(f'\n\n\n {cd} \n\n\n')
-		if self.assignment_question != None:
-			if not frappe.db.exists("Assignment Submission", self.name):
-				assignment_question = frappe.get_doc({
-					"doctype": "Assignment Submission",
-					"event_id": self.name,
-					"question": self.assignment_question
-				})
-				# add invoice record to databse
-				assignment_question.insert(ignore_permissions = True).save()
-				frappe.db.commit()
-			elif frappe.db.exists("Assignment Submission", self.name):
-				frappe.db.set_value("Assignment Submission", self.name, "question", self.assignment_question)
 
 		event_registrations = frappe.get_all("Event Registration", filters={"event": self.name})
-		
 		for event_registration in event_registrations:
 			registration_doc = frappe.get_doc("Event Registration", event_registration.name)
 			existing_skills = [skill.skill for skill in registration_doc.skills_gained]
@@ -56,15 +41,14 @@ class TinkerHubEvent(WebsiteGenerator):
 
 		# web view route
 		if not self.route:
-			self.route = f"events/{cleanup_page_name(self.name)}"
+			self.route = f"events/{self.name}"
 
 	
 	def get_context(self, context):
 
 		user_roles = frappe.get_roles()
-
-		participant = False
 		cur_user = frappe.session.user
+		participant = False
 		cur_event = self.name
 
 		if cur_user == 'Guest':
@@ -99,8 +83,17 @@ class TinkerHubEvent(WebsiteGenerator):
 		context.is_learner = is_learner
 		context.is_admin = is_admin
 		context.show_sidebar=1
-		
 
 		return context
+	
+	# @frappe.whitelist()
+	# def update_documents(self, doctype, field_to_update, new_value, filter):
 
-		
+	# 	documents = frappe.get_all(doctype, filters=filter, fields=['name'])
+
+	# 	for doc in documents:
+	# 		frappe.db.set_value(doctype, doc.name, field_to_update, new_value)
+
+	
+
+

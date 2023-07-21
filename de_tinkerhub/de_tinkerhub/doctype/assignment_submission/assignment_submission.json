@@ -1,14 +1,14 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{event_id}",
+ "autoname": "format:{event}",
  "creation": "2023-07-19 22:32:18.316710",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "event_id",
+  "event",
   "column_break_zaaoc",
   "learner",
   "section_break_esajt",
@@ -17,12 +17,6 @@
  ],
  "fields": [
   {
-   "fieldname": "event_id",
-   "fieldtype": "Link",
-   "label": "Event ID",
-   "options": "TinkerHub Event"
-  },
-  {
    "fieldname": "column_break_zaaoc",
    "fieldtype": "Column Break"
   },
@@ -30,13 +24,14 @@
    "fieldname": "learner",
    "fieldtype": "Link",
    "label": "Learner",
-   "options": "User"
+   "options": "Learner"
   },
   {
    "fieldname": "section_break_esajt",
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "assignment.question",
    "fieldname": "question",
    "fieldtype": "Small Text",
    "label": "Question"
@@ -45,11 +40,18 @@
    "fieldname": "user_response",
    "fieldtype": "Attach",
    "label": "User Response"
+  },
+  {
+   "fetch_from": "assignment.event",
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "label": "Event",
+   "options": "TinkerHub Event"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-19 22:32:18.316710",
+ "modified": "2023-07-21 06:05:51.801481",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Assignment Submission",
