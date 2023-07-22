@@ -1,13 +1,12 @@
 import frappe
+from frappe import get_doc
 
 @frappe.whitelist(allow_guest=True)
 def event_registration(event, email, full_name, mobile_no):
-
-
-    registration = frappe.get_doc({
+    registration = get_doc({
         "doctype": "Event Registration",
         "event":  event,
-        "email": email,   
+        "email": email,
         "full_name": full_name,
         "mobile_no": mobile_no
     })
@@ -22,7 +21,7 @@ def event_registration(event, email, full_name, mobile_no):
 @frappe.whitelist(allow_guest=True)
 def submit_feedback(event, learner, question, response):
 
-    feedback = frappe.get_doc({
+    feedback = get_doc({
         "doctype": "Feedback Submission",
         "event": event,
         "learner": learner,
@@ -40,7 +39,7 @@ def submit_feedback(event, learner, question, response):
 @frappe.whitelist(allow_guest=True)
 def submit_assignment(event, learner, question, response):
 
-    assignment = frappe.get_doc({
+    assignment = get_doc({
         "doctype": "Assignment Submission",
         "event": event,
         "learner": learner,

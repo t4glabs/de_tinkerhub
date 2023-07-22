@@ -1,12 +1,15 @@
 import frappe
 from frappe import get_doc
+import random
+
 
 def on_user_signup(doc, method):
     user_id = doc.name
+
     if not frappe.db.exists({"doctype":"Learner","user": user_id}):
         learner = get_doc({
             "doctype": "Learner",
-            "user": user_id,
+            "mail": user_id,
             "is_published": 1
         })
         learner.save(ignore_permissions=True)
