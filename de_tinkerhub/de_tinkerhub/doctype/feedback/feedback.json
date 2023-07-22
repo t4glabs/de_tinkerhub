@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2023-07-22 10:01:42.138581",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "show_answers",
+  "column_break_gaac",
+  "max_attempts",
+  "show_submission_history",
+  "section_break_sbjx",
+  "questions",
+  "section_break_3",
+  "event",
+  "column_break_5",
+  "time"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "show_answers",
+   "fieldtype": "Check",
+   "label": "Show Answers"
+  },
+  {
+   "fieldname": "column_break_gaac",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "max_attempts",
+   "fieldtype": "Int",
+   "label": "Max Attempts"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_submission_history",
+   "fieldtype": "Check",
+   "label": "Show Submission History"
+  },
+  {
+   "fieldname": "section_break_sbjx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "Feedback Question"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "label": "Event",
+   "options": "TinkerHub Event",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "time",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Time Per Question (in Seconds)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-07-22 10:01:42.138581",
+ "modified_by": "Administrator",
+ "module": "De Tinkerhub",
+ "name": "Feedback",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Event Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

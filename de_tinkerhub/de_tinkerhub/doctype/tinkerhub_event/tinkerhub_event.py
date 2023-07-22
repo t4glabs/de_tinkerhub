@@ -41,50 +41,50 @@ class TinkerHubEvent(WebsiteGenerator):
 
 		# web view route
 		if not self.route:
-			self.route = f"events/{self.name}"
+			self.route = f"tinkerhub-events/{self.name}"
 
 	
-	def get_context(self, context):
+	# def get_context(self, context):
 
-		user_roles = frappe.get_roles()
-		cur_user = frappe.session.user
-		participant = False
-		cur_event = self.name
+	# 	user_roles = frappe.get_roles()
+	# 	cur_user = frappe.session.user
+	# 	participant = False
+	# 	cur_event = self.name
 
-		if cur_user == 'Guest':
-			is_admin = False
-			is_learner = False
-			is_guest = True
-		elif cur_user == 'Administrator':
-			is_admin = True
-			is_learner = False
-			is_guest = False
-		elif 'Learner' in user_roles:
-			is_admin = False
-			is_learner = True
-			is_guest = False
+	# 	if cur_user == 'Guest':
+	# 		is_admin = False
+	# 		is_learner = False
+	# 		is_guest = True
+	# 	elif cur_user == 'Administrator':
+	# 		is_admin = True
+	# 		is_learner = False
+	# 		is_guest = False
+	# 	elif 'Learner' in user_roles:
+	# 		is_admin = False
+	# 		is_learner = True
+	# 		is_guest = False
 
-		if is_learner:
-			if frappe.db.exists("Learner", cur_user):
-				learner = frappe.get_doc("Learner", cur_user)
-				user_events = [event.event for event in learner.my_events]
-				if cur_event in user_events:
-					participant = True
-			else:
-				participant = False
-		# convert time to 12 hour format
-		event_time = [self.starting_time, self.ending_time]
-		for index, time in enumerate(event_time):
-			time_obj = datetime.strptime(str(time), "%H:%M:%S")
-			context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
+	# 	if is_learner:
+	# 		if frappe.db.exists("Learner", cur_user):
+	# 			learner = frappe.get_doc("Learner", cur_user)
+	# 			user_events = [event.event for event in learner.my_events]
+	# 			if cur_event in user_events:
+	# 				participant = True
+	# 		else:
+	# 			participant = False
+	# 	# convert time to 12 hour format
+	# 	event_time = [self.starting_time, self.ending_time]
+	# 	for index, time in enumerate(event_time):
+	# 		time_obj = datetime.strptime(str(time), "%H:%M:%S")
+	# 		context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
-		context.participant = participant
-		context.is_guest = is_guest
-		context.is_learner = is_learner
-		context.is_admin = is_admin
-		context.show_sidebar=1
+	# 	context.participant = participant
+	# 	context.is_guest = is_guest
+	# 	context.is_learner = is_learner
+	# 	context.is_admin = is_admin
+	# 	context.show_sidebar=1
 
-		return context
+	# 	return context
 
 
 	
