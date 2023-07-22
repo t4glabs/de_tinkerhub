@@ -20,7 +20,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-07-22 13:06:32.663911",
+ "modified": "2023-07-22 13:33:52.935212",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "learner-registration",
@@ -73,15 +73,16 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "default": "+91-",
    "fieldname": "mobile_no",
-   "fieldtype": "Data",
+   "fieldtype": "Phone",
    "hidden": 0,
    "label": "Mobile No",
    "max_length": 0,
    "max_value": 0,
    "options": "",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {

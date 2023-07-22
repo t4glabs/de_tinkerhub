@@ -5,6 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 class EventRegistration(Document):
+
 	def before_insert(self):
 		event = frappe.get_doc("TinkerHub Event", self.event)
 		for event_skill in event.skills:
@@ -36,5 +37,3 @@ class EventRegistration(Document):
 				learner_event=learner.append("my_events")
 				learner_event.event = self.event
 			learner.save()
-	
-		

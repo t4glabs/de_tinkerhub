@@ -1,7 +1,7 @@
 # Copyright (c) 2023, D-codE and contributors
 # For license information, please see license.txt
 
-import frappe
+import frappe 
 from frappe.website.website_generator import WebsiteGenerator
 from frappe.website.utils import cleanup_page_name
 from datetime import datetime
@@ -85,14 +85,7 @@ class TinkerHubEvent(WebsiteGenerator):
 		context.show_sidebar=1
 
 		return context
-	
-	# @frappe.whitelist()
-	# def update_documents(self, doctype, field_to_update, new_value, filter):
 
-	# 	documents = frappe.get_all(doctype, filters=filter, fields=['name'])
-
-	# 	for doc in documents:
-	# 		frappe.db.set_value(doctype, doc.name, field_to_update, new_value)
 
 	
 

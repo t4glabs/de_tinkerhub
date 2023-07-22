@@ -55,8 +55,7 @@ let assignment_dialog = (question) => {
 
 
 event_registration = (data) => {
-    let url = window.location.href,
-    event = url.split('/')[4]
+    let event = frappe.get_route()[2]
 
     frappe.call({
     method: 'de_tinkerhub.services.rest.event_registration',
