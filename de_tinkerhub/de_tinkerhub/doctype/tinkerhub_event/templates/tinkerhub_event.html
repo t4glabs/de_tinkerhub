@@ -8,31 +8,49 @@
 
 {% block page_content %}
 
+{% if event_poster %}
+<img style="width:500px;" src="{{event_poster}}" >
+{% endif %}
+
 <h1>{{ title }}</h1>
-<h3>{{ date }}</h3> 
+<h3>{{ starting_date }}</h3> 
 
-<span>{{ event_time_0 }} to {{ event_time_1 }}</span>
-
-{% if participant and assignment_question and status=='Ongoing' %}
-
-<button onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button>
-
-{%endif%}
-
-{% if participant and feedback_question and status=='Completed' %}
-
-<button onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
-
-{%endif%}
-
+<span>{{ event_time_0 }}</span> 
+<!-- Register -->
 {% if status == "Confirmed" %}
 <button class="register-btn" onclick="show_form()">Register Now</button>
 {% endif %}
+<!-- Assignment -->
+{% if participant and assignment_question and status=='Ongoing' %}
+<button onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button>
+{%endif%}
+<!-- Feedback -->
+{% if participant and feedback_question and status=='Completed' %}
+<button onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
+{%endif%}
 
 {% if description %}
 <p>{{ description }}</p> 
 {% endif %}
-
+<!-- Prerequisites -->
+{% if prerequisites %}
+<div>
+    <h3>Prerequisites</h3>
+    <ol>
+        {% for x in prerequisites %}
+        <li>{{x.prerequisite}}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endif %}
+<!-- Location -->
+{% if district or address %}
+<div>
+    <h3>Location</h3>
+    <p>{{district}}</p>
+    <p>{{address}}</p>
+</div>
+{% endif %}
 <!-- sessions -->
 {% if event_session %}
 <h2>Event Sessions</h2>
