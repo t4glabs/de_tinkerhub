@@ -1,43 +1,40 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:name_of_the_skill",
- "creation": "2023-07-08 12:46:23.979943",
+ "autoname": "field:dist_name",
+ "creation": "2023-07-22 15:10:04.649597",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "skills_details_section",
-  "name_of_the_skill",
-  "description"
+  "district_name",
+  "dist_name"
  ],
  "fields": [
   {
-   "fieldname": "skills_details_section",
-   "fieldtype": "Section Break",
-   "label": "Skills Details"
-  },
-  {
-   "fieldname": "name_of_the_skill",
+   "fieldname": "district_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Name of the skill",
+   "label": "District Name",
+   "no_copy": 1,
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "description",
-   "fieldtype": "Text",
-   "label": "Description"
+   "fieldname": "dist_name",
+   "fieldtype": "Data",
+   "label": "dist_name",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-22 16:40:19.029290",
+ "modified": "2023-07-22 17:06:42.539034",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
- "name": "Skills",
+ "name": "District",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
@@ -67,8 +64,10 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "district_name",
+ "translated_doctype": 1
 }

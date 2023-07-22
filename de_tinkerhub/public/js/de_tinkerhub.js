@@ -55,7 +55,8 @@ let assignment_dialog = (question) => {
 
 
 event_registration = (data) => {
-    let event = frappe.get_route()[2]
+    let url = window.location.href,
+        event = url.split('/')[4]
 
     frappe.call({
     method: 'de_tinkerhub.services.rest.event_registration',
@@ -87,6 +88,24 @@ submit_assignment = (data, question) => {
 })
 }
 
+submit_feedback = (data, question) => {
+    let url = window.location.href,
+    event = url.split('/')[4]
+
+    frappe.call({
+    method: 'de_tinkerhub.services.rest.submit_feedback',
+    args: {
+        'event': event,
+        'learner': frappe.session.user,
+        'question': question,
+        'response': data.response
+    },
+    callback: r => {
+    }
+})
+}
+
+// dialog fields
 const registration_fields = () => {
     let full_name, email
     if(frappe.session.user != "Guest"){

@@ -2,30 +2,30 @@
  "actions": [],
  "allow_guest_to_view": 1,
  "allow_rename": 1,
- "autoname": "format:{title} {YYYY}",
+ "autoname": "format:{event}-{###}",
  "creation": "2023-07-03 17:44:11.302535",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "event__poster_section",
+  "event_poster",
   "event_details_section",
   "title",
   "description",
   "column_break_ngmsz",
   "category",
-  "image",
   "location_section",
-  "address",
   "district",
   "geo_location",
-  "column_break_fgeki",
-  "city",
-  "state",
+  "column_break_p9lvp",
+  "address",
   "date_time_section",
-  "date",
-  "column_break_pem5e",
+  "starting_date",
   "starting_time",
+  "column_break_pem5e",
+  "ending_date",
   "ending_time",
   "feedback_form",
   "event_sec",
@@ -68,11 +68,12 @@
   },
   {
    "fieldname": "category",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Category",
-   "options": "\nTech\nCareer"
+   "options": "Category"
   },
   {
+   "depends_on": "eval:doc.type=='Offline';",
    "fieldname": "location_section",
    "fieldtype": "Section Break",
    "label": "Location "
@@ -84,8 +85,9 @@
   },
   {
    "fieldname": "district",
-   "fieldtype": "Data",
-   "label": "District"
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District"
   },
   {
    "fieldname": "geo_location",
@@ -93,28 +95,9 @@
    "label": "Geo Location"
   },
   {
-   "fieldname": "column_break_fgeki",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City"
-  },
-  {
-   "fieldname": "state",
-   "fieldtype": "Data",
-   "label": "State"
-  },
-  {
    "fieldname": "date_time_section",
    "fieldtype": "Section Break",
    "label": "Date & Time"
-  },
-  {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date"
   },
   {
    "fieldname": "column_break_pem5e",
@@ -144,12 +127,13 @@
   {
    "fieldname": "section_break_klmam",
    "fieldtype": "Section Break",
-   "label": "Essentials"
+   "label": "Prerequisites and Skills Gained"
   },
   {
    "fieldname": "prerequisites",
-   "fieldtype": "Data",
-   "label": "Prerequisites"
+   "fieldtype": "Table",
+   "label": "Prerequisites",
+   "options": "Prerequisite"
   },
   {
    "fieldname": "status_section",
@@ -158,8 +142,7 @@
   },
   {
    "fieldname": "skills_gaining",
-   "fieldtype": "Section Break",
-   "label": "Skills Gaining"
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "skills",
@@ -211,30 +194,13 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "\nConfirmed\nOngoing\nCompleted"
-  },
-  {
-   "fieldname": "feedback_form",
-   "fieldtype": "Link",
-   "label": "Feedback Form",
-   "options": "Feedback"
-  },
-  {
-   "fieldname": "image",
-   "fieldtype": "Attach Image",
-   "label": "Image"
-  },
-  {
-   "default": "0",
-   "fieldname": "published",
-   "fieldtype": "Check",
-   "label": "Published"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2023-07-22 13:45:46.563872",
+ "modified": "2023-07-21 00:10:16.308523",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",
@@ -278,8 +244,8 @@
    "write": 1
   }
  ],
- "route": "tinkerhub-events",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "title"
 }

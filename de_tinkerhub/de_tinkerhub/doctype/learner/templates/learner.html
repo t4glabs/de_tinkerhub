@@ -1,7 +1,27 @@
 {% extends "templates/web.html" %}
 
 {% block page_content %}
-<h1>{{ title }}</h1>
-{% endblock %}
+<h1>{{ full_name }}</h1>
 
+{% if college %}
+<h5>College: {{college}}</h5>
+{% endif %}
+
+{% if your_role %}
+<h5>Role: {{your_role}}</h5>
+{% endif %}
+
+{% if linkedin %}
+<h5><a href="{{linkedin}}" target="_blank">Linkedin</a></h5>
+{% endif %}
+
+{% if github %}
+<h5><a href="{{github}}" target="_blank">GitHub</a></h5>
+{% endif %}
+
+{% if portfolio %}
+<h5><a href="{{portfolio}}" target="_blank">Portfolio Website</a></h5>
+{% endif %}
+
+{% endblock %}
 <!-- this is a sample default web page template -->

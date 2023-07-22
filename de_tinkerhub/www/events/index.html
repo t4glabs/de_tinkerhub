@@ -1,0 +1,32 @@
+{%  extends "templates/web.html" %}
+
+{% block title %}{{ _("Past Events") }}{% endblock %}
+
+{% block page_content %}
+
+
+{% if past_events %}
+<section>
+    <h1>Past Events</h1>
+    {%- for event in past_events %}     
+        <div>
+            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
+        </div>
+        
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if registered_events %}
+<section>
+    <h1>Registered Events</h1>
+    {%- for event in registered_events %}     
+        <div>
+            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
+        </div>
+        
+    {% endfor %}
+</section>
+{% endif %}
+
+{% endblock %}

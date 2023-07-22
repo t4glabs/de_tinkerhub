@@ -5,4 +5,13 @@ frappe.ui.form.on('TinkerHub Event', {
 	// refresh: function(frm) {
 
 	// } 
+	starting_date: frm =>{
+		frm.set_value("ending_date", frm.doc.starting_date)
+		frm.refresh_field("ending_date")	
+	}
 });
+
+// starting_date: frm =>{
+// 	frm.set_value("ending_date", frm.doc.starting_date)
+// 	frm.refresh_field("ending_date")	
+// }

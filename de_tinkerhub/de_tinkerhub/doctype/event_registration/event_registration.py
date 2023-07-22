@@ -31,9 +31,4 @@ class EventRegistration(Document):
 					learner_skill.event = self.event
 
 			learner.save()
-			existing_event = [event.event for event in learner.my_events]
 
-			if not self.event in existing_event:
-				learner_event=learner.append("my_events")
-				learner_event.event = self.event
-			learner.save()

@@ -67,7 +67,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "\n",
    "fetch_from": "user.mobile_no",
    "fieldname": "mobile_no",
    "fieldtype": "Phone",
@@ -202,7 +201,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-22 13:32:32.494136",
+ "modified": "2023-07-22 16:06:59.542184",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",

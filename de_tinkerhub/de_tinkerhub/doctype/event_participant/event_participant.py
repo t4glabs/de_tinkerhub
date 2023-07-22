@@ -13,4 +13,4 @@ class EventParticipant(Document):
 			if not self.event_id in existing_event:
 				learner_event=learner.append("my_events")
 				learner_event.event= self.event_id
-			learner.save()
+			learner.save(ignore_permissions = True)

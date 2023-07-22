@@ -13,4 +13,4 @@ def send_event_update_email(doc, method):
     for registration in registrations:
         learner = frappe.get_doc("Learner", registration.email)
         email = learner.email
-        frappe.sendmail(recipients=email, subject=subject, message=message)
+        # frappe.sendmail(recipients=email, subject=subject, message=message)

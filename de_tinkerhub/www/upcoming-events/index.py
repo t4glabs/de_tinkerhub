@@ -6,7 +6,7 @@ def get_context(context):
     today = datetime.date.today()
     context.events = frappe.db.get_list('TinkerHub Event',
                                 filters={
-                                    'date':  (">", today)
+                                    'starting_date':  (">", today)
                                 },
                                 fields=['name','title', 'date'])
     
