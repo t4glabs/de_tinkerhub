@@ -1,4 +1,49 @@
-<div>
-	<a href="{{ doc.route }}">{{ doc.title or doc.name }}</a>
+<div class="col-sm-4 item-card">
+	<div class="card text-left">
+		<div class="card-img-container">
+			<a href="{{ doc.route }}" style="text-decoration: none;"></a>
+			<img class="card-img" src="{{ doc.image}}">
+
+			</a>
+		</div>
+
+		<div class="card-body text-left card-body-flex" style="width:100%">
+			<div style="margin-top: 1rem; display: flex;">
+
+				<a href="{{ doc.route }}">{{ doc.title or doc.name }}</a>
+				<div class="product-title">
+
+				</div>
+				</a>
+
+				<div class="cart-indicator hidden" data-item-code="0023-BLA-L">
+					1
+				</div>
+			</div>
+			<div class="product-category">
+				<p>{{ doc.description }} </p>
+				<p>{{ doc.date }}</p>
+			</div>
+		</div>
+	</div>
 </div>
-<!-- this is a sample default list template -->
+
+<style>
+	.result {
+		display: flex;
+		flex-wrap: wrap;
+
+		box-sizing: border-box;
+	}
+
+	.card-img {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 350px;
+	}
+
+	.item-card {
+		padding-top: 30px;
+	}
+</style>

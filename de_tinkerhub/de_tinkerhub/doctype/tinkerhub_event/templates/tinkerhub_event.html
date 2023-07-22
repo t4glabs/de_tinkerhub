@@ -1,88 +1,103 @@
 {% extends "templates/web.html" %}
 
-<div class="sidebar-column col-sm-{{ 2 }}">
-    {% block page_sidebar %}
-    {% include "templates/side-bar.html" %}
-    {% endblock %}
-</div>
-
 {% block page_content %}
 
-{% if event_poster %}
-<img style="width:500px;" src="{{event_poster}}" >
-{% endif %}
+<div class="product-container item-main">
+    <div class="item-content">
+        <div class="product-page-content" itemscope="" itemtype="http://schema.org/Product">
+            <!-- Image, Description, Add to Cart -->
+            <div class="row mb-5">
+                <div class="col-md-4 h-100 d-flex mb-4">
+                    <div class="border text-center rounded product-image" style="overflow: hidden;">
+                        <img alt="Justice Indu Malhotra's Commentary on the Law of Arbitration" src="{{ image }}">
+                    </div>
 
-<h1>{{ title }}</h1>
-<h3>{{ starting_date }}</h3> 
+                    <!-- Simple image preview -->
+                </div>
 
-<span>{{ event_time_0 }}</span> 
-<!-- Register -->
-{% if status == "Confirmed" %}
-<button class="register-btn" onclick="show_form()">Register Now</button>
-{% endif %}
-<!-- Assignment -->
-{% if participant and assignment_question and status=='Ongoing' %}
-<button onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button>
-{%endif%}
-<!-- Feedback -->
-{% if participant and feedback_question and status=='Completed' %}
-<button onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
-{%endif%}
+                <div class="col-md-7 product-details expand">
+                    <div class="d-flex">
+                        <!-- title -->
+                        <div class="product-title col-11" itemprop="name">
+                            {{ title }}
+                        </div>
+                        <div class="like-action-item-fp like-action  ml-2" data-item-code="8995">
+                            <svg class="icon sm">
+                                <use class="not-wished wish-icon" href="#icon-heart"></use>
+                            </svg>
+                        </div>
 
-{% if description %}
-<p>{{ description }}</p> 
-{% endif %}
-<!-- Prerequisites -->
-{% if prerequisites %}
-<div>
-    <h3>Prerequisites</h3>
-    <ol>
-        {% for x in prerequisites %}
-        <li>{{x.prerequisite}}</li>
-        {% endfor %}
-    </ol>
-</div>
-{% endif %}
-<!-- Location -->
-{% if district or address %}
-<div>
-    <h3>Location</h3>
-    <p>{{district}}</p>
-    <p>{{address}}</p>
-</div>
-{% endif %}
-<!-- sessions -->
-{% if event_session %}
-<h2>Event Sessions</h2>
-    {% for session in event_session %}
-    <div style="border:1px solid black;">
-        <h3>{{ session.title }}</h3>
-        <p> {{ session.description }}</p>
-        <p>{{session.from_time}}</p>
-    </div>
-    {% endfor %}
-{% endif %}
+                    </div>
 
-<!-- organizers -->
 
-{% if organizers %}
-<h2>Event Organizers</h2>
-    <div style="display:flex; margin-right:20px;">
-        {% for organizer in organizers %}
-        <div style="margin-right:20px;">
-            <p>{{organizer.full_name}}</p>
-            <span>{{organizer.email}}</span> <br>
-            {% if organizer.mobile %}
-            <span>{{organizer.mobile}}</span> 
-            {% endif %}
+
+                    <div class="product-description" itemprop="description">
+
+                        {{ description }}
+
+                    </div>
+
+                    <div class="mt-6 mb-5">
+                        <div class="mb-4 d-flex">
+                            <a href="/cart" class="btn btn-light btn-view-in-cart hidden mr-2 font-md" role="button">
+                                View in Cart
+                            </a>
+                            <button data-item-code="8995" class="btn btn-primary btn-add-to-cart mr-2 w-30-40"
+                                style="min-width: 135px !important;">
+                                <span class="mr-2">
+                                    <svg class="icon icon-md">
+                                        <use href="#icon-assets"></use>
+                                    </svg>
+                                </span>
+                                Enroll Now
+                            </button>
+                            <button class="btn btn-inquiry font-md w-30-40" style="min-width: 135px;"
+                                data-item-code="WEB-ITM-0036">
+                                Feedback From
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% endfor %}
     </div>
-    
-{% endif %}
+</div>
+{% endblock %}
 
-{% endblock %}
-{%- block script %}
-    {{ include_script('controls.bundle.js') }}
-{% endblock %}
-<!-- this is a sample default web page template -->
+
+<style>
+    .website-image {
+        cursor: pointer;
+    }
+
+    .image-zoom-view {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1080;
+    }
+
+    .image-zoom-view img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .image-zoom-view button {
+        position: absolute;
+        right: 3rem;
+        top: 2rem;
+    }
+
+    .image-zoom-view svg {
+        color: var(--white);
+    }
+</style>
