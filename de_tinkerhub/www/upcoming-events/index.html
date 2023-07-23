@@ -10,7 +10,7 @@
     <h1>Upcoming Events</h1>
     {%- for event in events %}     
         <div>
-            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }} - {{ event.date }}</a>
+            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }} - {{ event.starting_date }}</a>
         </div>
     {% endfor %}
 {% else %}

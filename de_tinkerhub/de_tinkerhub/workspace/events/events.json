@@ -11,8 +11,19 @@
  "idx": 0,
  "is_hidden": 0,
  "label": "Events",
- "links": [],
- "modified": "2023-07-21 07:02:02.206423",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "registration",
+   "link_count": 0,
+   "link_to": "Event Registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-07-23 01:30:21.915122",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Events",
