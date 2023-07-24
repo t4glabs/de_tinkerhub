@@ -4,10 +4,9 @@
 
 {% block page_content %}
 
-
+<h1>Past Events</h1>
 {% if past_events %}
 <section>
-    <h1>Past Events</h1>
     {%- for event in past_events %}     
         <div>
             <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
@@ -17,9 +16,9 @@
 </section>
 {% endif %}
 
+<h1>Registered Events</h1>
 {% if registered_events %}
 <section>
-    <h1>Registered Events</h1>
     {%- for event in registered_events %}     
         <div>
             <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
