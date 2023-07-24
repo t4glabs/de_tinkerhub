@@ -207,7 +207,7 @@ doc_events = {
 portal_menu_items = [ 
     {"title": "Public Profile", "route": f"/learner/{frappe.session.user}", "role": "Learner"},
     {"title": "Upcoming Events", "route": "/upcoming-events", "role": "All"},
-    {"title": "Events", "route": "/events", "role": "Learner"},
+    {"title": "My Events", "route": "/my-events", "role": "Learner"},
     {"title": "My Profile", "route": "/learner-profile/new", "role": "Learner"},
     {"title": "Create Event", "route": "/app/tinkerhub-event/new-tinkerhub-event", "role": "Event Admin"}
 ]  

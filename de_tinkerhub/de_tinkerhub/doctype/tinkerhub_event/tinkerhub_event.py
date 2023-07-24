@@ -74,10 +74,10 @@ class TinkerHubEvent(WebsiteGenerator):
 				participant = False
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
-		for index, time in enumerate(event_time):
-			if time:
-				time_obj = datetime.strptime(str(time), "%H:%M:%S")
-				context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
+		# for index, time in enumerate(event_time):
+		# 	if time:
+		# 		time_obj = datetime.strptime(str(time), "%H:%M:%S")
+		# 		context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
 		context.participant = participant
 		context.is_guest = is_guest
