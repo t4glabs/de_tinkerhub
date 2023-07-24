@@ -7,7 +7,7 @@ def get_context(context):
     context.events = frappe.db.get_list('TinkerHub Event',
                                 filters={
                                     'starting_date':  (">", today),
-                                    'status': ['!=', 'Completed'],
+                                    'status': 'Confirmed',
                                     'is_published': 1
                                 },
                                 fields=['name','title', 'starting_date'])
