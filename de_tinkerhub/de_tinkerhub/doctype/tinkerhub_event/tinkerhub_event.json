@@ -16,6 +16,7 @@
   "description",
   "column_break_ngmsz",
   "category",
+  "type",
   "location_section",
   "district",
   "geo_location",
@@ -27,7 +28,6 @@
   "column_break_pem5e",
   "ending_date",
   "ending_time",
-  "feedback_form",
   "event_sec",
   "event_session",
   "organizers_list_section",
@@ -39,8 +39,8 @@
   "status_section",
   "status",
   "publish_this_event_column",
+  "is_published",
   "route",
-  "published",
   "feedback_question_section",
   "feedback_question",
   "column_break_xhfqu",
@@ -166,8 +166,15 @@
    "label": "Publish This Event"
   },
   {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published"
+  },
+  {
    "fieldname": "route",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Route"
   },
   {
@@ -194,13 +201,43 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "\nConfirmed\nOngoing\nCompleted"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nOnline\nOffline"
+  },
+  {
+   "fieldname": "column_break_p9lvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ending_date",
+   "fieldtype": "Date",
+   "label": "Ending Date"
+  },
+  {
+   "fieldname": "starting_date",
+   "fieldtype": "Date",
+   "label": "Starting Date"
+  },
+  {
+   "fieldname": "event__poster_section",
+   "fieldtype": "Section Break",
+   "label": "Event  Poster"
+  },
+  {
+   "fieldname": "event_poster",
+   "fieldtype": "Attach Image",
+   "label": "Event Poster"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
- "is_published_field": "published",
+ "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-21 00:10:16.308523",
+ "modified": "2023-07-23 00:29:54.979543",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",
@@ -244,6 +281,7 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
