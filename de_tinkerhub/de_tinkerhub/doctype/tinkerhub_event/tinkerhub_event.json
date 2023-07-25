@@ -55,12 +55,16 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
-   "label": "Title"
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_ngmsz",
@@ -69,8 +73,10 @@
   {
    "fieldname": "category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Category",
-   "options": "Category"
+   "options": "Category",
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.type=='Offline';",
@@ -205,8 +211,10 @@
   {
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Type",
-   "options": "\nOnline\nOffline"
+   "options": "\nOnline\nOffline",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_p9lvp",
@@ -220,7 +228,8 @@
   {
    "fieldname": "starting_date",
    "fieldtype": "Date",
-   "label": "Starting Date"
+   "label": "Starting Date",
+   "reqd": 1
   },
   {
    "fieldname": "event__poster_section",
@@ -237,7 +246,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-25 02:13:32.675582",
+ "modified": "2023-07-25 23:31:48.233004",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",
