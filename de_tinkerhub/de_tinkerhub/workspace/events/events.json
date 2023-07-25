@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"aTfjKijmJl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Events</span>\",\"col\":12}},{\"id\":\"CRUoTp-WYG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Participant List\",\"col\":3}},{\"id\":\"tv4jF-AVMg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Event Registration\",\"col\":3}},{\"id\":\"I4jaJxRve0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Learner\",\"col\":3}},{\"id\":\"PAFB1svstb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"College\",\"col\":3}}]",
+ "content": "[{\"id\":\"aTfjKijmJl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Events</span>\",\"col\":12}},{\"id\":\"dBSfHAaR0n\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tinkerhub Events\",\"col\":3}},{\"id\":\"tv4jF-AVMg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Registrations\",\"col\":3}},{\"id\":\"CRUoTp-WYG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Participant List\",\"col\":3}},{\"id\":\"Gc9kaYyCFs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assignments\",\"col\":3}},{\"id\":\"vOt0Nd55f0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Feedbacks\",\"col\":3}},{\"id\":\"I4jaJxRve0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Learner\",\"col\":3}},{\"id\":\"PAFB1svstb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"College\",\"col\":3}}]",
  "creation": "2023-07-04 12:09:02.645536",
  "custom_blocks": [],
  "docstatus": 0,
@@ -23,7 +23,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-07-25 23:28:33.757582",
+ "modified": "2023-07-25 23:58:26.118299",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Events",
@@ -42,7 +42,14 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Event Registration",
+   "label": "Assignments",
+   "link_to": "Assignment Submission",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Registrations",
    "link_to": "Event Registration",
    "type": "DocType"
   },
@@ -51,6 +58,20 @@
    "doc_view": "List",
    "label": "Participant List",
    "link_to": "Event Participant",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tinkerhub Events",
+   "link_to": "TinkerHub Event",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Feedbacks",
+   "link_to": "Feedback Submission",
    "type": "DocType"
   },
   {
