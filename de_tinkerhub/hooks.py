@@ -211,3 +211,7 @@ portal_menu_items = [
     {"title": "My Profile", "route": "/learner-profile/new", "role": "Learner"},
     {"title": "Create Event", "route": "/app/tinkerhub-event/new-tinkerhub-event", "role": "Event Admin"}
 ]  
+
+website_route_rules = [
+    {"from_route": "/event-portal/<name>", "to_route": "event-portal"},
+]

@@ -17,7 +17,7 @@
 
 <span>{{ starting_date }}</span> 
 <!-- Register -->
-{% if status == "Confirmed" %}
+{% if not registrant and status == "Confirmed" %}
 <button class="register-btn" onclick="show_form()">Register Now</button>
 {% endif %}
 <!-- Assignment -->

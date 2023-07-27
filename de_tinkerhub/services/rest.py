@@ -58,3 +58,8 @@ def submit_assignment(event, learner, question, response):
         msg='Your assignment has been submitted.',
         title='Success'
     )
+
+@frappe.whitelist(allow_guest=True)
+def part(emails):
+    print(f'\n\n\n Get a job :) \n\n\n')
+    print(f'\n\n\n {emails} \n\n\n')

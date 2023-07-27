@@ -1,15 +1,14 @@
 {%  extends "templates/web.html" %}
 
-{% block title %}{{ _("Upcoming Events") }}{% endblock %}
+{% block title %}{{ _("Event Admin Portal") }}{% endblock %}
 
 {% block page_content %}
 
-
+<h1> Your Events </h1>
 {% if events %}
-    <h1>Upcoming Events</h1>
     {%- for event in events %}     
         <div>
-            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }} - {{ event.starting_date }}</a>
+            <h4>{{event.title}}</h4> <button><a href="{{frappe.utils.get_url()}}/event-portal/{{event.name}}">View Details</a></button>
         </div>
     {% endfor %}
 {% else %}

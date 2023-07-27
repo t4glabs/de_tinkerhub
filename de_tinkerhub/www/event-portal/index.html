@@ -1,0 +1,58 @@
+{%  extends "templates/web.html" %}
+
+{% block title %}{{ _("Event Details Events") }}{% endblock %}
+
+{% block page_content %}
+<h1>Event Details Page</h1>   
+
+<h3>Event registrants</h3>
+<div id="email-list">
+    {%- for registrant in registrants %}     
+    <label><input type="checkbox" name="email" value="{{registrant.email}}"> {{registrant.email}}</label><br>
+    {% endfor %}
+    <button id="submit-button">Submit</button>
+</div>
+
+<script>
+
+frappe.ready(function() {
+  // Handle form submission when the submit button is clicked
+  document.getElementById('submit-button').addEventListener('click', function() {
+    var selectedEmails = [];
+
+    // Loop through all email checkboxes and add the selected emails to the array
+    var checkboxes = document.getElementsByName('email');
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedEmails.push(checkboxes[i].value);
+      }
+    }
+
+    // Call the function to edit/create records in 'Event Participant' doctype
+    editOrCreateEventParticipants(selectedEmails);
+  });
+
+  // Function to edit/create records in 'Event Participant' doctype
+  function editOrCreateEventParticipants(emails) {
+    // Use AJAX to send the selected emails to the server and edit/create records
+    frappe.call({
+      method: 'de_tinkerhub.services.rest.part',
+      args: {
+        emails: emails
+      },
+      callback: function(response) {
+        if (response.message) {
+          // Success: Handle the response message if needed
+          console.log('Event participants edited/created:', response.message);
+        } else {
+          // Error: Handle the error response if needed
+          console.error('Error editing/creating event participants:', response.exc);
+        }
+      }
+    });
+  }
+});
+
+</script>
+
+{% endblock %}

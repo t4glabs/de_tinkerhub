@@ -37,6 +37,6 @@ def get_context(context):
                                         'status': ['!=', 'Completed']
                                     },
                                     fields=['name','title', 'date'])
-
+        
     return context
 

@@ -6,10 +6,10 @@
 
 
 {% if events %}
-    <h1>Upcoming Events</h1>
+    <h1>Event Details Page</h1>
     {%- for event in events %}     
         <div>
-            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }} - {{ event.starting_date }}</a>
+           <h1>{{event.title}}</h1>
         </div>
     {% endfor %}
 {% else %}

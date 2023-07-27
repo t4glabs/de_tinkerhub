@@ -13,12 +13,14 @@
   {
    "fieldname": "event",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Event",
    "options": "TinkerHub Event"
   },
   {
    "fieldname": "skill",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Skill",
    "options": "Skills"
   }
@@ -26,7 +28,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-07-08 13:37:41.796521",
+ "modified": "2023-07-26 12:01:40.801061",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "My Skills",

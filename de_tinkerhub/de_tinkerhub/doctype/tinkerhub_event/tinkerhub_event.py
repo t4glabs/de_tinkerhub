@@ -49,6 +49,7 @@ class TinkerHubEvent(WebsiteGenerator):
 		user_roles = frappe.get_roles()
 		cur_user = frappe.session.user
 		participant = False
+		registrant = False
 		cur_event = self.name
 
 		if cur_user == 'Guest':
@@ -70,8 +71,14 @@ class TinkerHubEvent(WebsiteGenerator):
 				user_events = [event.event for event in learner.my_events]
 				if cur_event in user_events:
 					participant = True
+				if frappe.db.exists(
+					'Event Registration', 
+					{'event': f'{self.name}', 'email': cur_user}):
+					registrant = True
 			else:
 				participant = False
+				registrant: False
+		
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
 		# for index, time in enumerate(event_time):
@@ -80,6 +87,7 @@ class TinkerHubEvent(WebsiteGenerator):
 		# 		context[f"event_time_{index}"]  = time_obj.strftime("%I:%M %p")
 
 		context.participant = participant
+		context.registrant = registrant
 		context.is_guest = is_guest
 		context.is_learner = is_learner
 		context.is_admin = is_admin

@@ -91,6 +91,7 @@
    "depends_on": "eval:doc.college_student=='Yes';",
    "fieldname": "college",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "College",
    "options": "College"
   },
@@ -201,7 +202,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-07-22 16:06:59.542184",
+ "modified": "2023-07-26 23:02:08.891064",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",
