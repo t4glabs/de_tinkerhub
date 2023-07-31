@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+import json
 from frappe.model.document import Document
 
 class EventRegistration(Document):
@@ -32,3 +33,16 @@ class EventRegistration(Document):
 
 			learner.save()
 
+@frappe.whitelist()
+def save_response(result, event):
+	result = json.loads(result)
+	response = frappe.new_doc("Event Registration")
+	learner = frappe.get_doc("Learner", {"email":frappe.session.user})
+	response.event = event
+	response.full_name = learner.full_name
+	response.email = learner.email
+	response.mobile_no = learner.mobile_no
+	for i in result:
+		response.append('registration_quiz_answer',i)
+	response.save(ignore_permissions=True)
+	return response.name

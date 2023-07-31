@@ -16,7 +16,8 @@
   "email",
   "mobile_no",
   "skills_from_the_event_section",
-  "skills_gained"
+  "skills_gained",
+  "registration_quiz_answer"
  ],
  "fields": [
   {
@@ -75,11 +76,17 @@
    "in_list_view": 1,
    "label": "Email",
    "reqd": 1
+  },
+  {
+   "fieldname": "registration_quiz_answer",
+   "fieldtype": "Table",
+   "label": "Registration Quiz Answer",
+   "options": "Registration Quiz Answer"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-20 13:45:17.278587",
+ "modified": "2023-07-30 16:38:51.749951",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Event Registration",

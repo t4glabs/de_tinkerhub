@@ -16,6 +16,7 @@ app_license = "MIT"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/de_tinkerhub/css/de_tinkerhub.css"
+web_include_css = "lms.bundle.css"
 web_include_js = "/assets/de_tinkerhub/js/de_tinkerhub.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -44,6 +45,11 @@ web_include_js = "/assets/de_tinkerhub/js/de_tinkerhub.js"
 # role_home_page = {
 #	"Role": "home_page"
 # }
+
+website_route_rules = [
+    {'from':'/registration-quiz?event=<event>', 'to':'registration-quiz'},
+    {'from':'/submit-reg-quiz?event=<event>', 'to':'submit-reg-quiz'}
+]
 
 # Generators
 # ----------
