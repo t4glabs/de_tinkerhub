@@ -11,7 +11,8 @@ def get_context(context):
                                                    'event':frappe.form_dict["event"]}):
             context.duplication = True
     else:
-        frappe.throw("Please register as a learner to continue.")
+        message = "Become a learner to register for event!"
+        raise frappe.PermissionError(_(message))
 
     if frappe.form_dict.get("event"):
         event = frappe.get_doc("TinkerHub Event", frappe.form_dict["event"])

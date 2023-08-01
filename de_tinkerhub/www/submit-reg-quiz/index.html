@@ -5,10 +5,10 @@
 
 {% block content %}
 {% if True %}
-<div class="markdown-source lesson-content-card">
+<div class="markdown-source lesson-content-card" style="max-width: 50%; display: block; margin-left: auto; margin-right: auto">
 <div class="mt-4">
     {% if not duplication %}
-    <div id="start-banner" class="common-card-style column-card align-items-center">
+    <div id="start-banner" class="common-card-style column-card align-items-center hide">
         <div class="text-center my-10">
             <div class="bold-heading" id="quiz-title" data-name="{{ quiz.name }}" data-event="{{quiz.event_name}}">
 				{{ quiz.title }}
@@ -19,7 +19,7 @@
         </div>
     </div>
     
-    <form id="quiz-form" class="common-card-style column-card hide">
+    <form id="quiz-form" class="common-card-style column-card">
         <div class="questions">
             {% for question in quiz.questions %}
             {% set instruction = _("") if question.type == "Multiplte Answers" else _("Type your answer") 
@@ -80,8 +80,8 @@
             </div>
             {% endfor %}
         </div>
-        <div class="">
-            <button class="" id="summary">
+        <div class="" style="padding-left: 0%; text-align: right;">
+            <button class="btn btn-primary" id="summary">
 				{{ _("Submit") }}
 			</button>
         </div>
