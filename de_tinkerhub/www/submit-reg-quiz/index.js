@@ -1,8 +1,8 @@
 frappe.ready(()=>{
-    $(".btn-start-quiz").click((e) => {
-        $("#start-banner").addClass("hide");
-		$("#quiz-form").removeClass("hide");
-	});
+    // $(".btn-start-quiz").click((e) => {
+    //     $("#start-banner").addClass("hide");
+	// 	$("#quiz-form").removeClass("hide");
+	// });
     $(".option").click((e) => {
 		if (!$("#check").hasClass("hide")) enable_check(e);
 	});
