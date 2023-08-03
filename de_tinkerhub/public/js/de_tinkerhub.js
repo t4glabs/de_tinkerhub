@@ -53,22 +53,22 @@ let assignment_dialog = (question) => {
     feedback_dialog.show();
 };
 
-
-event_registration = (data) => {
+let event_registration = (data) => {
     let url = window.location.href,
         event = url.split('/')[4]
-
+    console.log(data)
     frappe.call({
-    method: 'de_tinkerhub.services.rest.event_registration',
-    args: {
-        'event': event,
-        'email' : data.email,
-        'full_name': data.full_name,
-        'mobile_no': data.contact
-    },
-    callback: r => {
-    }
-})
+        method: 'de_tinkerhub.services.rest.event_registration',
+        args: {
+            'event': event,
+            'email' : data.email,
+            'full_name': data.full_name,
+            'mobile_no': data.contact
+        },
+        callback: r => {
+            
+        }
+    })
 }
 
 submit_assignment = (data, question) => {

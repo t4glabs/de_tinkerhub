@@ -8,11 +8,13 @@
 {% if events %}
     {%- for event in events %}     
         <div>
-            <h4>{{event.title}}</h4> <button><a href="{{frappe.utils.get_url()}}/event-portal/{{event.name}}">View Details</a></button>
+            <h4>{{event.title}}</h4> 
+            <button><a href="{{frappe.utils.get_url()}}/event-portal/{{event.name}}">View Details</a></button>
+            <button><a href="{{frappe.utils.get_url()}}/event-creation/{{event.name}}/edit">Edit/Update Details</a></button>
         </div>
     {% endfor %}
 {% else %}
-    <h2>Exciting events are coming up!</h2>
+    <h2>You haven't created any events yet.</h2>
 {% endif %}
 
 {% endblock %}

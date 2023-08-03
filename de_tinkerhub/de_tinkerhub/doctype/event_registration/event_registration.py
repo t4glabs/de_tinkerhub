@@ -6,30 +6,38 @@ import json
 from frappe.model.document import Document
 
 class EventRegistration(Document):
-
-	def before_insert(self):
-		event = frappe.get_doc("TinkerHub Event", self.event)
-		for event_skill in event.skills:
-			self.append("skills_gained", {
-				"skill": event_skill.skill
-			})
 			
 	def on_update(self):
+		# existing skills of learner
 		if frappe.db.exists("Learner", self.email):
 			learner = frappe.get_doc("Learner", self.email)
 			existing_skills = [skill.skill for skill in learner.my_skills]
+			existing_event = [event.event for event in learner.my_events]
+			#  skills from event
+			event = frappe.get_doc("TinkerHub Event", self.event)
+			event_skills = [skill.skill for skill in event.skills]
 
-			for skills_gained in self.skills_gained:
-				if skills_gained.skill in existing_skills:
-					if not skills_gained.gained == 1:
-						for learner_skill in learner.my_skills:
-							if learner_skill.skill == skills_gained.skill:
-								learner.my_skills.remove(learner_skill)
+			if self.is_participant:
+				if not self.event in existing_event:
+					learner_event=learner.append("my_events")
+					learner_event.event= self.event
+				learner.save(ignore_permissions = True)
+			else:
+				if self.event in existing_event:
+					for row in learner.my_events:
+						if row.event == self.event:
+							row.delete()
 
-				elif skills_gained.gained == 1:
-					learner_skill = learner.append("my_skills")
-					learner_skill.skill = skills_gained.skill
-					learner_skill.event = self.event
+			if self.add_skill:
+				for skill in event_skills:
+					if skill not in existing_skills:
+						learner.append('my_skills', { 'event': self.event ,'skill': skill})
+			else:
+				# skill_event = [skill.event for skill in event.skills]
+				for skill in event_skills:
+					for row in learner.my_skills:
+						if row.skill == skill:
+							row.delete()
 
 			learner.save()
 

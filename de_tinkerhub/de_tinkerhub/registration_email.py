@@ -3,7 +3,7 @@ import frappe
 def send_registration_email(doc, method):
     
     learner = frappe.get_doc("Learner", doc.learner)
-    email=learner.email
+    email = doc.email
     subject = "Welcome to the event!"
     message = "Dear learner, thank you for registering for the event."
     

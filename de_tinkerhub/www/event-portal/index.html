@@ -6,44 +6,97 @@
 <h1>Event Details Page</h1>   
 
 <h3>Event registrants</h3>
-<div id="email-list">
-    {%- for registrant in registrants %}     
-    <label><input type="checkbox" name="email" value="{{registrant.email}}"> {{registrant.email}}</label><br>
+{% if registrants %} 
+  <table id="email-list">
+    <tr>
+      <th>Email</th>
+      <th>Participant</th>
+      <th>Add Skill</th>
+    </tr>
+    {%- for registrant in registrants %}   
+    <tr>
+      {%- set participant_checkbox = registrant.is_participant %}
+      {%- set skill_checkbox = registrant.is_participant and registrant.add_skill %}
+      {%- set skill_disabled = not participant_checkbox %}
+      <td>{{ registrant.email }}</td> 
+      <td><input type="checkbox" name="email" value="{{ registrant.email }}" {% if participant_checkbox %}checked{% endif %}></td>
+      <td><input type="checkbox" class="skill" name="skilled" value="{{ registrant.email }}" {% if skill_checkbox %}checked{% endif %} {% if skill_disabled %}disabled{% endif %}></td>
+    </tr> 
     {% endfor %}
-    <button id="submit-button">Submit</button>
-</div>
-
+  </table>
+  
+  <button id="submit-button">Submit</button>
+{% else %}
+<h4> No registrations yet</h4>
+{% endif %}
 <script>
 
 frappe.ready(function() {
   // Handle form submission when the submit button is clicked
-  document.getElementById('submit-button').addEventListener('click', function() {
-    var selectedEmails = [];
+  let checkboxes = document.getElementsByName('email'),
+    registrants = [],
+    selectedEmails = [],
+    skilled = document.getElementsByName('skilled'),
+    addSkills = []
+  // Get all the first checkboxes
+  // const firstCheckboxes = document.querySelectorAll('.skill');
 
+// Loop through each first checkbox and add an event listener
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', (event) => {
+
+      let row = event.target.parentNode.parentNode;
+      skill = row.querySelector('.skill')
+      skill.checked = event.target.checked;
+      skill.disabled = !event.target.checked;
+
+  });
+});
+
+  document.getElementById('submit-button').addEventListener('click', function() {
     // Loop through all email checkboxes and add the selected emails to the array
-    var checkboxes = document.getElementsByName('email');
     for (var i = 0; i < checkboxes.length; i++) {
+      registrants.push(checkboxes[i].value) // all registrants
       if (checkboxes[i].checked) {
-        selectedEmails.push(checkboxes[i].value);
+        selectedEmails.push(checkboxes[i].value); // all participants
+      }
+    }
+
+    for (var i = 0; i < skilled.length; i++) {
+      if (skilled[i].checked) {
+        addSkills.push(skilled[i].value); // skilled participants
       }
     }
 
     // Call the function to edit/create records in 'Event Participant' doctype
-    editOrCreateEventParticipants(selectedEmails);
+    editOrCreateEventParticipants(registrants, selectedEmails, addSkills);
   });
 
   // Function to edit/create records in 'Event Participant' doctype
-  function editOrCreateEventParticipants(emails) {
+  function editOrCreateEventParticipants(registrants, participants, skilled) {
+    let url = window.location.href,
+        event_id = url.split('/')[4]
     // Use AJAX to send the selected emails to the server and edit/create records
     frappe.call({
       method: 'de_tinkerhub.services.rest.part',
       args: {
-        emails: emails
+        event: event_id,
+        registrants: registrants,
+        participants: selectedEmails,
+        skilledParticipants: skilled
       },
       callback: function(response) {
         if (response.message) {
-          // Success: Handle the response message if needed
-          console.log('Event participants edited/created:', response.message);
+          frappe.msgprint({
+            title: __('Notification'),
+            indicator: 'green',
+            message: __('Document updated successfully')
+          });
+
+          setTimeout(function () {
+            window.location.reload();
+          }, 3000);
+          
         } else {
           // Error: Handle the error response if needed
           console.error('Error editing/creating event participants:', response.exc);

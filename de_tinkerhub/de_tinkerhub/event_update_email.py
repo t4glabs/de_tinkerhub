@@ -11,6 +11,7 @@ def send_event_update_email(doc, method):
     message = "Dear learner, the event '{}' has been updated.".format(event_name)
     
     for registration in registrations:
-        learner = frappe.get_doc("Learner", registration.email)
-        email = learner.email
-        # frappe.sendmail(recipients=email, subject=subject, message=message)
+        if frappe.db.exists('Learner', registration.email):
+            learner = frappe.get_doc("Learner", registration.email)
+            email = learner.email
+            # frappe.sendmail(recipients=email, subject=subject, message=message)
