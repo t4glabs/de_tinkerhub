@@ -63,3 +63,10 @@ frappe.ready(function() {
 		
 	}
 })
+
+// frappe.web_form.after_load = () => {
+// 	if (window.location.pathname.endsWith("/new") && frappe.session.user) {
+// 		let current_path = window.location.href;
+// 		window.location.href = current_path.replace("/new", "/" + frappe.session.user);
+// 	}
+// }

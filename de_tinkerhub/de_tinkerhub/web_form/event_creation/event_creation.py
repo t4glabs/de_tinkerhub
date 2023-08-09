@@ -3,13 +3,14 @@ def get_context(context):
 	context.no_cache = 1
 	return context
 
-cur_user = frappe.session.user
-user_roles = frappe.get_roles()
-
 @frappe.whitelist()
 def check_admin():
-	list = []
-	if 'Event Admin' in user_roles: 
+	cur_user = frappe.session.user
+	user_roles = frappe.get_roles()
+	
+	if 'Event Admin' not in user_roles: 
+		return False
+	else:
 		college = frappe.db.get_value('Learner', cur_user, 'college')
 		if college:
 			admins = frappe.db.get_list('Learner',
@@ -27,8 +28,7 @@ def check_admin():
 						},
 						fields=['name','title', 'starting_date']
 					)
-			list = [event.name for event in events ]
-			
+			list = [event.name for event in events]
 		else:
 			events = frappe.db.get_list('TinkerHub Event',
 						filters = {
@@ -36,10 +36,10 @@ def check_admin():
 						},
 						fields=['name','title', 'starting_date'])
 			list = [event.name for event in events]
-	else:
-		list = []
+		return list
+		
 
-	return list
+	
 	
 	
 	

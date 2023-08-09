@@ -12,15 +12,15 @@ def get_context(context):
     else:
         # participated events
         learner = frappe.get_doc("Learner", cur_user)
-        event_ids = [event.event for event in learner.my_events]
+        events = [event.event for event in learner.my_events]
 
         context.past_events = frappe.db.get_list('TinkerHub Event',
                                     filters={
-                                        'name': ['in', event_ids]
+                                        'name': ['in', events]
                                     },
                                     fields=['name','title', 'starting_date'])
         # registered events
-        registered_event_ids = frappe.get_all(
+        registered_event_ids = frappe.db.get_all(
             'Event Registration',
             filters={
                 'email': cur_user
@@ -28,8 +28,11 @@ def get_context(context):
             fields=['event'],
             as_list=True 
         )
+        print(f'\n\n\n ids: {registered_event_ids} \n\n\n')
         today = datetime.date.today()
         event_ids = [event[0] for event in registered_event_ids]
+        
+        print(f'\n\n\n {event_ids} \n\n\n')
         context.registered_events = frappe.db.get_list('TinkerHub Event',
                                     filters={
                                         'name': ['in', event_ids],
