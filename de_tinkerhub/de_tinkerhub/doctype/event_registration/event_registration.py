@@ -3,7 +3,9 @@
 
 import frappe
 import json
+import ast
 from frappe.model.document import Document
+
 
 class EventRegistration(Document):
 			
@@ -39,17 +41,19 @@ class EventRegistration(Document):
 						if row.skill == skill:
 							row.delete()
 
-			learner.save()
+			learner.save(ignore_permissions=True)
 
-@frappe.whitelist()
-def save_response(result, event):
+@frappe.whitelist(allow_guest=True)
+
+def save_response(result, primary, event):
+	prim =  ast.literal_eval(primary)
 	result = json.loads(result)
 	response = frappe.new_doc("Event Registration")
-	learner = frappe.get_doc("Learner", {"email":frappe.session.user})
+
 	response.event = event
-	response.full_name = learner.full_name
-	response.email = learner.email
-	response.mobile_no = learner.mobile_no
+	response.full_name = prim[0]
+	response.email = prim[1]
+	response.mobile_no = prim[2]
 	for i in result:
 		response.append('registration_quiz_answer',i)
 	response.save(ignore_permissions=True)

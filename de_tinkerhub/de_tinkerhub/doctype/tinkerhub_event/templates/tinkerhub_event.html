@@ -18,7 +18,8 @@
 <span>{{ starting_date }}</span> 
 <!-- Register -->
 {% if not registrant and status == "Confirmed" %}
-<button class="register-btn" onclick="show_form()">Register Now</button>
+<button class="register-btn" onclick=""><a href="{{frappe.utils.get_url()}}/submit-reg-quiz?event={{name}}">Register Now</a></button>
+
 {% endif %}
 <!-- Assignment -->
 {% if participant and assignment_question and status=='Ongoing' %}

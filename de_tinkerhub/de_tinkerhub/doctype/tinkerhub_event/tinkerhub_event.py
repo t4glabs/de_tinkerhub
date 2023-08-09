@@ -4,6 +4,7 @@
 import frappe 
 from frappe.website.website_generator import WebsiteGenerator
 from frappe.website.utils import cleanup_page_name
+from frappe import get_doc
 from datetime import datetime
 
 class TinkerHubEvent(WebsiteGenerator):
@@ -45,7 +46,7 @@ class TinkerHubEvent(WebsiteGenerator):
 
 	
 	def get_context(self, context):
-
+		context.has_custom = False
 		user_roles = frappe.get_roles()
 		cur_user = frappe.session.user
 		participant = False
@@ -79,6 +80,15 @@ class TinkerHubEvent(WebsiteGenerator):
 				participant = False
 				registrant: False
 		
+		if frappe.db.exists('Registration Question', {'event': self.name}):
+			context.has_custom = True
+		# doc = get_doc('Event Registration', {'event': frappe.form_dict["event"], 
+        #                                'email': frappe.session.user})
+		
+		# if doc.
+        
+		
+		
 		# convert time to 12 hour format
 		event_time = [self.starting_time, self.ending_time]
 		# for index, time in enumerate(event_time):
@@ -92,6 +102,7 @@ class TinkerHubEvent(WebsiteGenerator):
 		context.is_learner = is_learner
 		context.is_admin = is_admin
 		context.show_sidebar=1
+		context.no_cache = 1
 
 		return context
 

@@ -18,7 +18,7 @@ def get_context(context):
                                     filters={
                                         'name': ['in', event_ids]
                                     },
-                                    fields=['name','title', 'date'])
+                                    fields=['name','title', 'starting_date'])
         # registered events
         registered_event_ids = frappe.get_all(
             'Event Registration',
@@ -36,7 +36,7 @@ def get_context(context):
                                         'starting_date':  [">=", today],
                                         'status': ['!=', 'Completed']
                                     },
-                                    fields=['name','title', 'date'])
+                                    fields=['name','title', 'starting_date'])
         
     return context
 

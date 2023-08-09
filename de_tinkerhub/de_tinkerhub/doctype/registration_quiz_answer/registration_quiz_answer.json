@@ -29,7 +29,6 @@
   {
    "fieldname": "answer_2",
    "fieldtype": "Small Text",
-   "in_list_view": 1,
    "label": "Answer 2"
   },
   {
@@ -48,7 +47,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-07-30 16:39:48.038889",
+ "modified": "2023-08-09 15:09:55.422281",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Registration Quiz Answer",

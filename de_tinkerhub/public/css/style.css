@@ -2005,7 +2005,7 @@ select {
 }
 
 .table th {
-	font-weight: 400;
+	font-weight: 800;
 	border: none;
 	font-size: var(--text-md);
 }

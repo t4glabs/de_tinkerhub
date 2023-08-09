@@ -13,5 +13,6 @@ def get_context(context):
                                 fields=['name','title', 'starting_date'])
     
     context.show_sidebar = 1
+    context.no_cache = 1
     return context
 

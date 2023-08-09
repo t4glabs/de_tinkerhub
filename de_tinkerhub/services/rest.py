@@ -19,10 +19,13 @@ def event_registration(event, email, full_name, mobile_no):
         })
 
         registration.save(ignore_permissions = True)
-        frappe.msgprint(
-            msg='Thank you for registering!',
-            title='Success'
-        )
+        # frappe.msgprint(
+        #     msg='Thank you for registering!',
+        #     title='Success'
+        # )
+
+        # frappe.local.response['type'] = 'redirect'
+        # frappe.local.response['location'] = '/upcoming-events'
 
 @frappe.whitelist(allow_guest=True)
 def submit_feedback(event, learner, question, response):
