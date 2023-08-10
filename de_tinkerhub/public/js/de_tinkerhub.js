@@ -25,7 +25,6 @@ let feedback_dialog = (question) => {
         fields: fields,
         primary_action: data => {
             submit_feedback(data, question)  
-            console.log(data)
             feedback_dialog.hide()
         }
     });
@@ -45,7 +44,6 @@ let assignment_dialog = (question) => {
         fields: fields,
         primary_action: data => {
             submit_assignment(data, question)  
-            console.log(data)
             feedback_dialog.hide()
         }
     });
@@ -56,7 +54,6 @@ let assignment_dialog = (question) => {
 let event_registration = (data) => {
     let url = window.location.href,
         event = url.split('/')[4]
-    console.log(data)
     frappe.call({
         method: 'de_tinkerhub.services.rest.event_registration',
         args: {

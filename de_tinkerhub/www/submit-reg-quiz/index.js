@@ -18,7 +18,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const event_name = urlParams.get('event');
 const quiz_summary = (e = undefined) => {
 	const response = $('form').serializeArray()
-	console.log('response: ', response)
 	let questions = response.map(({ name }) => decodeURIComponent(name));
 	questions = [...new Set(questions)];
 	let quiz = []
@@ -38,13 +37,11 @@ const quiz_summary = (e = undefined) => {
 		});
 		quiz.push(data)
 	});
-	console.log('quiz: ', quiz)
-	details[0] = document.getElementById('user-name').value;
-	details[1] = document.getElementById('user-email').value;
-	details[2]= document.getElementById('user-phone').value;
-	// details.full_name = document.getElementById('user-name').value;
-	// details.email = document.getElementById('user-email').value;
-	// details.mobile = document.getElementById('user-phone').value;
+	details = [
+		document.getElementById('user-name').value,
+		document.getElementById('user-email').value,
+		document.getElementById('user-phone').value
+	];
 	frappe.call({
 		method: "de_tinkerhub.de_tinkerhub.doctype.event_registration.event_registration.save_response",
 		args: {
@@ -54,24 +51,11 @@ const quiz_summary = (e = undefined) => {
 			result: quiz,
 		},
 		callback: (r) => {
-			console.log(r.message)
 			if(r.message){
 				$(".user-info").addClass("hide");
 				$("#quiz-form").addClass("hide");
 				$("#submission-banner").removeClass("hide");
 			}
-			// $(".question").addClass("hide");
-			// $("#summary").addClass("hide");
-			// $(".quiz-footer span").addClass("hide");
-			// $("#quiz-form").prepend(
-			// 	`<div class="summary bold-heading text-center">
-			// 		${__("Your score is")} ${data.message.score}
-			// 		${__("out of")} ${total_questions}
-			// 	</div>`
-			// );
-			// $("#try-again").attr("data-submission", data.message.submission);
-			// $("#try-again").removeClass("hide");
-			// self.quiz_submitted = true;
 		},
 	});
 };

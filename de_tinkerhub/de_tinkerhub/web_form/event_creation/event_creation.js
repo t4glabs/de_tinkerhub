@@ -70,43 +70,19 @@ frappe.ready(function() {
 				}
 			}
 	})
-
-	// let events = []
-	// if (!window.location.pathname.endsWith("/new")){
-	// 	frappe.call({
-	// 		method: 'de_tinkerhub.de_tinkerhub.web_form.event_creation.event_creation.check_admin',
-	// 		args: {
-	// 		},
-	// 		callback: function(response) {
-	// 			if (response){
-	// 				check(response.message)
-	// 			}else {
-	// 				// Error: Handle the error response if needed
-	// 				console.error('Error accessing data', response.exc);
-	// 			}
-	// 		}
-	// 	})
-	// }
-
-	// if (window.location.pathname.endsWith("/new")){
-	// 	console.log('hi')
-	// }
 	
 })
 
-
-
 function check(e){
-	console.log(e)
+
 	if (!(window.location.pathname.endsWith("/new"))){
 		let url = window.location.href,
 		event_s = url.split('/')[4]
-		console.log(url, event_s)
+		
 		if (!(e.includes(event_s))){
 			let main = document.querySelector('.page_content')
 			main.innerHTML = show_error
 		}
 	}
-	
 }
 
