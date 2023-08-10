@@ -56,20 +56,22 @@ let show_error = `
 `
 
 frappe.ready(function() {
-
-	frappe.call({
-		method: 'de_tinkerhub.de_tinkerhub.web_form.event_creation.event_creation.check_admin',
-			args: {
-			},
-			callback: function(response) {
-				if (!response.message){
-					let main = document.querySelector('.page_content')
-					main.innerHTML = show_error
-				}else {
-					check(response.message)
+	if (frappe.session.user != 'Administrator'){
+		frappe.call({
+			method: 'de_tinkerhub.de_tinkerhub.web_form.event_creation.event_creation.check_admin',
+				args: {
+				},
+				callback: function(response) {
+					if (!response.message){
+						let main = document.querySelector('.page_content')
+						main.innerHTML = show_error
+					}else {
+						check(response.message)
+					}
 				}
-			}
-	})
+		})	
+	}
+
 	
 })
 

@@ -53,6 +53,11 @@ class TinkerHubEvent(WebsiteGenerator):
 		registrant = False
 		cur_event = self.name
 
+		if 'Event Admin' in user_roles:
+			context.event_admin = True
+		else:
+			context.event_admin = False
+
 		if cur_user == 'Guest':
 			is_admin = False
 			is_learner = False
