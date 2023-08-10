@@ -1,8 +1,4 @@
-frappe.ready(function() {
-
-	let a = frappe.session.user
-	if (!(window.location.pathname.endsWith(a) || window.location.pathname.endsWith(`${a}/`))) {
-		let show_error = `
+let show_error = `
 			<style>
 			.page-card {
 				max-width: 360px;
@@ -58,9 +54,38 @@ frappe.ready(function() {
 				</div>
 			</div>
 			`
-		let main = document.querySelector('.page_content')
-		main.innerHTML = show_error
+
+// frappe.ready(function() {
+
+// 	let a = frappe.session.user
+// 	if(window.location.pathname.endsWith('edit')){
+// 		let url = window.location.pathname,
+// 			user = url.split('/')[2]
+// 		if(a!=user){
+// 			let main = document.querySelector('.page_content')
+// 			main.innerHTML = show_error
+// 		}
+// 	}else{
+// 		if (!(window.location.pathname.endsWith(a) || window.location.pathname.endsWith(`${a}/`))) {
+// 			let main = document.querySelector('.page_content')
+// 			main.innerHTML = show_error	
+// 		}
+// 	}
+// })
+
+frappe.ready(()=> {
+	const a = frappe.session.user;
+	const url = window.location.pathname;
+	const main = document.querySelector('.page_content');
+
+	if (url.endsWith('edit')) {
+		const user = url.split('/')[2];
 		
+		if (a !== user) {
+			main.innerHTML = show_error;
+		}
+	} else if (!(url.endsWith(a) || url.endsWith(`${a}/`))) {
+		main.innerHTML = show_error;
 	}
 })
 
