@@ -10,6 +10,7 @@ def on_user_signup(doc, method):
         learner = get_doc({
             "doctype": "Learner",
             "mail": user_id,
+            "email": user_id,
             "is_published": 1
         })
         learner.save(ignore_permissions=True)
