@@ -14,6 +14,13 @@ def on_user_signup(doc, method):
             "is_published": 1
         })
         learner.save(ignore_permissions=True)
+        permission = get_doc({
+            "doctype": "User Permission",
+            "user": user_id,
+            "allow": 'Learner',
+            "for_value": user_id
+        })
+        permission.save(ignore_permissions=True)
         # assign learner role
         user_doc = get_doc('User', user_id)
         user_doc.append('roles', {
