@@ -34,7 +34,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-22 16:40:19.029290",
+ "modified": "2023-09-04 01:26:56.663075",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Skills",
@@ -68,7 +68,10 @@
   }
  ],
  "quick_entry": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "name_of_the_skill",
+ "translated_doctype": 1
 }

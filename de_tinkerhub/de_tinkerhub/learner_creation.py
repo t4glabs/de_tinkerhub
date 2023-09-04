@@ -2,7 +2,6 @@ import frappe
 from frappe import get_doc
 import random
 
-
 def on_user_signup(doc, method):
     user_id = doc.name
 
@@ -28,5 +27,3 @@ def on_user_signup(doc, method):
         })
         user_doc.save(ignore_permissions=True)
         frappe.db.commit()
-
-
