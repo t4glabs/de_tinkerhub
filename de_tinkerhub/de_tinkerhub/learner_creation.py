@@ -4,14 +4,14 @@ import random
 
 def on_user_signup(doc, method):
     user_id = doc.email
-    print(f'\n\n\n NEW USER SIGNUP- {user_id} \n\n\n')
-    # user_id = doc.email
+    f_name = doc.full_name
 
     if not frappe.db.exists({"doctype":"Learner","user": user_id}):
         learner = get_doc({
             "doctype": "Learner",
             "mail": user_id,
             "email": user_id,
+            "user_link": user_id,
             "is_published": 1
         })
         learner.save(ignore_permissions=True)
