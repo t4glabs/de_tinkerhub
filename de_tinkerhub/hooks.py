@@ -117,10 +117,10 @@ doc_events = {
     },
     "User":{
         "after_insert":"de_tinkerhub.de_tinkerhub.learner_creation.on_user_signup"
-    },
-    "User":{
-        "on_update":"de_tinkerhub.de_tinkerhub.lead_role.on_lead_role"
     }
+    # "User":{
+    #     "on_update":"de_tinkerhub.de_tinkerhub.lead_role.on_lead_role"
+    # }
 }
 
 # Scheduled Tasks
