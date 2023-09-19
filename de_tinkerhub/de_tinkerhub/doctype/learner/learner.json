@@ -21,6 +21,7 @@
   "college_student",
   "column_break_pn1xt",
   "college",
+  "is_lead",
   "section_break_bwons",
   "is_working",
   "column_break_2g8po",
@@ -208,13 +209,19 @@
    "in_standard_filter": 1,
    "label": "Skill List",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_lead",
+   "fieldtype": "Check",
+   "label": "Is Lead"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-09-04 01:25:47.977372",
+ "modified": "2023-09-05 23:47:46.706424",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",

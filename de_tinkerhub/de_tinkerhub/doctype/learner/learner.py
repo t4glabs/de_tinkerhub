@@ -5,6 +5,22 @@ import frappe
 from frappe.website.website_generator import WebsiteGenerator
 
 class Learner(WebsiteGenerator):
-
 	def on_update(self):
-		pass
+	
+		if self.college:
+			college = self.college
+			campus_lead = frappe.get_doc({
+				'doctype': 'Learner',
+				'filters': {
+					'college': college,
+					'is_lead': 1
+				}
+			})		
+
+			if not frappe.db.exists( 'User Permission', { 'user': campus_lead,'allow': 'Learner', 'for_value': self.name }):
+				frappe.get_doc({
+					'doctype': 'User Permission',
+					'user': campus_lead,
+					'allow': 'Learner', 
+					'for_value': self.name
+				})

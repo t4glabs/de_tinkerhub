@@ -19,7 +19,9 @@
   "state",
   "column_break_xtjbn",
   "city",
-  "pincode"
+  "pincode",
+  "events_section",
+  "college_events"
  ],
  "fields": [
   {
@@ -81,11 +83,22 @@
    "fieldname": "pincode",
    "fieldtype": "Data",
    "label": "Pincode"
+  },
+  {
+   "fieldname": "events_section",
+   "fieldtype": "Section Break",
+   "label": "Events"
+  },
+  {
+   "fieldname": "college_events",
+   "fieldtype": "Table",
+   "label": "College Events",
+   "options": "College Event Reference"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-07 13:00:36.553990",
+ "modified": "2023-09-05 02:59:17.540384",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "College",
