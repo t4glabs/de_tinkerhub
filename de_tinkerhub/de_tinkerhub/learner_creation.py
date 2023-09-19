@@ -11,7 +11,6 @@ def on_user_signup(doc, method):
             "doctype": "Learner",
             "mail": user_id,
             "email": user_id,
-            "user_link": user_id,
             "is_published": 1
         })
         learner.save(ignore_permissions=True)
