@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-08-31 23:18:02.372476",
+ "modified": "2023-09-21 01:38:47.502645",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "event-creation",
@@ -162,7 +162,7 @@
    "show_in_filter": 0
   },
   {
-   "allow_read_on_all_link_options": 0,
+   "allow_read_on_all_link_options": 1,
    "fieldname": "district",
    "fieldtype": "Link",
    "hidden": 0,
