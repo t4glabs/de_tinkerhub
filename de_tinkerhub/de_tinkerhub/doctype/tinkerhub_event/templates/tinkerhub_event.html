@@ -13,22 +13,22 @@
 {% endif %}
 
 <h1>{{ title }}</h1>
-<h3>{{ starting_date }}</h3> 
-
-<span>{{ starting_date }}</span> 
 <!-- Register -->
 {% if not registrant and status == "Confirmed" %}
-<button class="register-btn" onclick=""><a href="{{frappe.utils.get_url()}}/submit-reg-quiz?event={{name}}">Register Now</a></button>
+<button class="btn register-btn" onclick=""><a href="{{frappe.utils.get_url()}}/submit-reg-quiz?event={{name}}">Register Now</a></button>
 
 {% endif %}
 <!-- Assignment -->
 {% if participant and assignment_question and status=='Ongoing' %}
-<button onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button>
+<button class="btn" onclick="assignment_dialog('{{assignment_question}}')">Submit Assignment</button>
 {%endif%}
 <!-- Feedback -->
 {% if participant and feedback_question and status=='Completed' %}
-<button onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
+<button class="btn" onclick="feedback_dialog('{{feedback_question}}')">Submit Feedback</button>
 {%endif%}
+<h3>{{ starting_date }}</h3> 
+
+<span>{{ starting_date }}</span> 
 
 {% if description %}
 <p>{{ description }}</p> 

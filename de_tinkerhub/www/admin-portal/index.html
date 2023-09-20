@@ -9,9 +9,9 @@
     {%- for event in events %}     
         <div>
             <h4>{{event.title}}</h4> 
-            <button><a href="{{frappe.utils.get_url()}}/event-portal/{{event.name}}">View Registrants</a></button>
-            <button><a href="{{frappe.utils.get_url()}}/event-creation/{{event.name}}/edit">Edit/Update Event Details</a></button>
-            <button><a href="{{frappe.utils.get_url()}}/registration-quiz?event={{event.name}}">Add/edit Reg Questions</a></button>
+            <button class="btn"><a href="{{frappe.utils.get_url()}}/event-portal/{{event.name}}">View Registrants</a></button>
+            <button class="btn"><a href="{{frappe.utils.get_url()}}/event-creation/{{event.name}}/edit">Edit/Update Event Details</a></button>
+            <button class="btn"><a href="{{frappe.utils.get_url()}}/registration-quiz?event={{event.name}}">Add/edit Reg Questions</a></button>
         </div>
     {% endfor %}
 {% else %}

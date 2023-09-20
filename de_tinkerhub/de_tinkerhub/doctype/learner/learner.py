@@ -5,6 +5,14 @@ import frappe
 from frappe.website.website_generator import WebsiteGenerator
 
 class Learner(WebsiteGenerator):
+
+	def get_context(self, context):
+		context.show_sidebar = 1
+
+	def validate(self):
+		if not self.route:
+			self.route = f"learner/{self.name}"
+
 	def on_update(self):
 	
 		if self.college:
@@ -17,10 +25,4 @@ class Learner(WebsiteGenerator):
 				}
 			})		
 
-			if not frappe.db.exists( 'User Permission', { 'user': campus_lead,'allow': 'Learner', 'for_value': self.name }):
-				frappe.get_doc({
-					'doctype': 'User Permission',
-					'user': campus_lead,
-					'allow': 'Learner', 
-					'for_value': self.name
-				})
+
