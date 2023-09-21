@@ -8,6 +8,8 @@ class Learner(WebsiteGenerator):
 
 	def get_context(self, context):
 		context.show_sidebar = 1
+		if self.college:
+			context.college_name = frappe.db.get_value('College', self.college, 'college_name') 
 
 	def validate(self):
 		if not self.route:
