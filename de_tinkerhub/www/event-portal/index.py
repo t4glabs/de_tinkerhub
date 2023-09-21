@@ -2,6 +2,13 @@ import frappe
 from frappe import get_doc
 import urllib.parse
 def get_context(context):
+
+    user_roles = frappe.get_roles()
+    if 'Event Admin' in user_roles:
+        context.event_admin = True
+    else:
+        context.event_admin = False
+
     event_id = frappe.form_dict.name
     event  = get_doc('TinkerHub Event', event_id)
 

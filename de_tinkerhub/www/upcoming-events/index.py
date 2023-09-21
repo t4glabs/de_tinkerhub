@@ -3,6 +3,12 @@ import datetime
 
 def get_context(context):
 
+    user_roles = frappe.get_roles()
+    if 'Event Admin' in user_roles:
+        context.event_admin = True
+    else:
+        context.event_admin = False
+
     today = datetime.date.today()
     context.events = frappe.db.get_list('TinkerHub Event',
                                 filters={

@@ -2,6 +2,12 @@
 
 {% block title %}{{ _("Past Events") }}{% endblock %}
 
+<div class="sidebar-column col-sm-{{ 2 }}">
+    {% block page_sidebar %}
+    {% include "templates/side-bar.html" %}
+    {% endblock %}
+</div>
+
 {% block page_content %}
 
 <h1>Past Events</h1>

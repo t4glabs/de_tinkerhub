@@ -1,5 +1,11 @@
 {%  extends "templates/web.html" %}
 
+<div class="sidebar-column col-sm-{{ 2 }}">
+  {% block page_sidebar %}
+  {% include "templates/side-bar.html" %}
+  {% endblock %}
+</div>
+
 {% block title %}{{ _("Event Details Events") }}{% endblock %}
 
 {% block page_content %}

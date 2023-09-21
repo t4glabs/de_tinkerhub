@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-09-21 01:38:47.502645",
+ "modified": "2023-09-22 00:06:35.830578",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "event-creation",
@@ -30,7 +30,7 @@
  "show_sidebar": 0,
  "success_message": "You can add custom registration questions, apart from name, email and mobile number, if required.",
  "success_title": "Add Registration Questions",
- "success_url": "http://t4g.tinker.com:8002/admin-portal",
+ "success_url": "http://54.95.13.232/admin-portal",
  "title": "Event Creation",
  "web_form_fields": [
   {
@@ -67,7 +67,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {

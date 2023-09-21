@@ -213,14 +213,14 @@ doc_events = {
 #	"de_tinkerhub.auth.validate"
 # ]
 
-portal_menu_items = [ 
-    {"title": "Upcoming Events", "route": "/upcoming-events", "role": "All"},
-    {"title": "My Events", "route": "/my-events", "role": "Learner"},
-    {"title": "My Profile", "route": "/learner-profile/new", "role": "Learner"},
-    {"title": "Public Profile", "route": f"/learner/{frappe.session.user}", "role": "Learner"},
-    {"title": "Event Admin", "route": "/admin-portal", "role": "Event Admin"},
-    {"title": "Create Event", "route": "/event-creation/new", "role": "Event Admin"}
-]  
+# portal_menu_items = [ 
+#     {"title": "Upcoming Events", "route": "/upcoming-events", "role": "All"},
+#     {"title": "My Events", "route": "/my-events", "role": "Learner"},
+#     {"title": "My Profile", "route": "/learner-profile/new", "role": "Learner"},
+#     {"title": "Public Profile", "route": f"/learner/{frappe.session.user}", "role": "Learner"},
+#     {"title": "Event Admin", "route": "/admin-portal", "role": "Event Admin"},
+#     {"title": "Create Event", "route": "/event-creation/new", "role": "Event Admin"}
+# ]  
 
 website_route_rules = [
     {"from_route": "/event-portal/<name>", "to_route": "event-portal"},

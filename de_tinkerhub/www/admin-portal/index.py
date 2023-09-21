@@ -8,6 +8,12 @@ if  (cur_user == 'Guest' or 'Event Admin' not in roles) and cur_user != 'Adminis
 else: 
     def get_context(context):
 
+        user_roles = frappe.get_roles()
+        if 'Event Admin' in user_roles:
+            context.event_admin = True
+        else:
+            context.event_admin = False
+
         college = frappe.db.get_value('Learner', cur_user, 'college')
 
         if college:
