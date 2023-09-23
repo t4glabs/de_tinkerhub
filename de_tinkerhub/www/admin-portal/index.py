@@ -5,14 +5,11 @@ cur_user = frappe.session.user
 
 if  (cur_user == 'Guest' or 'Event Admin' not in roles) and cur_user != 'Administrator':
     frappe.throw( ("You have to login as an Event Admin to access this page"),frappe.PermissionError)
+    event_admin = False
 else: 
     def get_context(context):
 
-        user_roles = frappe.get_roles()
-        if 'Event Admin' in user_roles:
-            context.event_admin = True
-        else:
-            context.event_admin = False
+        event_admin = True
 
         college = frappe.db.get_value('Learner', cur_user, 'college')
 
@@ -41,6 +38,7 @@ else:
            
         context.show_sidebar = 1
         context.no_cache = 1
+        context.event_admin = event_admin
         return context
 
 

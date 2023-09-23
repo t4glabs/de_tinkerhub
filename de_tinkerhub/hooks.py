@@ -225,3 +225,7 @@ doc_events = {
 website_route_rules = [
     {"from_route": "/event-portal/<name>", "to_route": "event-portal"},
 ]
+
+# permission_query_conditions = {
+# 	"Feedback Submission": "frappe.desk.doctype.feedback_submission.feedback_submission.get_permission_query_conditions"
+# }
