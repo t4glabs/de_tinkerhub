@@ -37,6 +37,9 @@
 <h4> No registrations yet</h4>
 {% endif %}
 
+
+{% if questions %}
+
 <div class="datatable-wrapper">
   <h4>Form Submissions</h4>
   <table class="table" style="margin:30px 0 0 0">
@@ -56,6 +59,8 @@
     {% endfor %}
   </table>
 </div>
+
+{% endif %}
   
 <script>
 
