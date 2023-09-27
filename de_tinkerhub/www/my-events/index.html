@@ -10,10 +10,6 @@
 
 {% block page_content %}
 
-{% if not registered_events and not past_event %}
-<h6>Events you've registered for will be listed here.</h6>
-{% endif %}
-
 {% if registered_events %}
 <h1>Registered Events</h1>
 <section>
@@ -37,6 +33,10 @@
     {% endfor %}
 </section>
 {% endif %}
+
+<!-- {% if not registered_events and not past_event %}
+<h6>Events you've registered for will be listed here.</h6>
+{% endif %} -->
 
 
 {% endblock %}
