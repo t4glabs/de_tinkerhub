@@ -6,6 +6,10 @@ from frappe.website.website_generator import WebsiteGenerator
 
 class Learner(WebsiteGenerator):
 
+	def autoname(self):
+		# select a project name based on customer
+		self.name = self.user	
+
 	def get_context(self, context):
 
 		user_roles = frappe.get_roles()
@@ -21,6 +25,12 @@ class Learner(WebsiteGenerator):
 	def validate(self):
 		if not self.route:
 			self.route = f"learner/{self.name}"
+
+		if self.user != self.email:
+			if self.user:
+				self.email = self.user
+			elif self.email:
+				self.user = self.email
 
 	def on_update(self):
 	

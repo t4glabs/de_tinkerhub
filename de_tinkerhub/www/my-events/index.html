@@ -10,8 +10,24 @@
 
 {% block page_content %}
 
-<h1>Past Events</h1>
+{% if not registered_events and not past_event %}
+<h6>Events you've registered for will be listed here.</h6>
+{% endif %}
+
+{% if registered_events %}
+<h1>Registered Events</h1>
+<section>
+    {%- for event in registered_events %}     
+        <div>
+            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
+        </div>
+        
+    {% endfor %}
+</section>
+{% endif %}
+
 {% if past_events %}
+<h1>Past Events</h1>
 <section>
     {%- for event in past_events %}     
         <div>
@@ -22,16 +38,5 @@
 </section>
 {% endif %}
 
-<h1>Registered Events</h1>
-{% if registered_events %}
-<section>
-    {%- for event in registered_events %}     
-        <div>
-            <a href="{{frappe.utils.get_url()}}/events/{{event.name}}">{{ event.title }}</a>
-        </div>
-        
-    {% endfor %}
-</section>
-{% endif %}
 
 {% endblock %}

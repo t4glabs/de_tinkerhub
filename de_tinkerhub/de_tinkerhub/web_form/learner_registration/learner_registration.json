@@ -20,7 +20,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-09-20 02:51:05.956978",
+ "modified": "2023-09-27 15:31:08.081551",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "learner-registration",
@@ -29,9 +29,9 @@
  "route": "learner-profile",
  "show_attachments": 0,
  "show_list": 0,
- "show_sidebar": 0,
+ "show_sidebar": 1,
  "success_message": "Profile updated successfully!",
- "success_url": "",
+ "success_url": "http://t4g.tinker.com:8002/learner-profile",
  "title": "Learner Profile",
  "web_form_fields": [
   {
@@ -74,9 +74,9 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "default": "+91-",
+   "default": "",
    "fieldname": "mobile_no",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "hidden": 0,
    "label": "Mobile No",
    "max_length": 0,
@@ -295,5 +295,6 @@
    "reqd": 0,
    "show_in_filter": 0
   }
- ]
+ ],
+ "website_sidebar": "Learner Form"
 }

@@ -2,18 +2,18 @@ import frappe
 from frappe import get_doc
 import random
 
+def on_target():
+    return frappe.session.user
+
 def on_user_signup(doc, method):
     user_id = doc.email
     f_name = doc.full_name
     first_name = doc.first_name
 
-    print(f'\n\n\n FULL_NAME: {f_name} \n\n\n')
-    print(f'\n\n\n FIRST_NAME: {first_name} \n\n\n')
-
-    if not frappe.db.exists({"doctype":"Learner","user": user_id}):
+    if not frappe.db.exists({"doctype":"Learner","email": user_id}):
         learner = get_doc({
             "doctype": "Learner",
-            "mail": user_id,
+            "user": user_id,
             "email": user_id,
             "is_published": 1
         })

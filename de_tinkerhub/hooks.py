@@ -51,6 +51,10 @@ website_route_rules = [
     {'from':'/submit-reg-quiz?event=<event>', 'to':'submit-reg-quiz'}
 ]
 
+website_redirects = [
+    {"source": "/learner", "target": f"/learner/{frappe.session.user}"}
+]
+
 # Generators
 # ----------
 
