@@ -8,8 +8,33 @@ from frappe import get_doc
 from datetime import datetime
 
 class TinkerHubEvent(WebsiteGenerator):
+
+	def after_insert(self):
+		if frappe.db.get_value('Learner', self.owner, 'college'):
+			
+			college = frappe.db.get_value('Learner', self.owner, 'college')
+			if not self.host_college:
+				self.host_college = college
+
+			try:
+				event_reference = frappe.get_doc(
+				{
+					"doctype": "College Event Reference",
+					"college_event": self.name,
+					"parent": college,
+					"parenttype": "College",
+					"parentfield": "college_events"
+				}
+				)
+				event_reference.save(ignore_permissions=True)
+				frappe.db.commit()
+				
+			except Exception as e:
+				frappe.throw(('An error occurred while adding college reference'))
+		else:
+			pass
+
 	def validate(self):
-	
 		# web view route
 		if not self.route:
 			self.route = f"events/{self.name}"

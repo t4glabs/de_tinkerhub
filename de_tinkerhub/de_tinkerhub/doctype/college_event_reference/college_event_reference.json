@@ -14,13 +14,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "College Event",
-   "options": "TinkerHub College Event"
+   "options": "TinkerHub Event",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-19 09:21:20.653555",
+ "modified": "2023-09-29 10:24:37.773526",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "College Event Reference",
