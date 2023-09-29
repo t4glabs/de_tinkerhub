@@ -1,6 +1,10 @@
 import frappe
 import datetime
 
+from de_tinkerhub.de_tinkerhub.utils import (
+	get_restriction_details
+)
+
 def get_context(context):
 
     user_roles = frappe.get_roles()
@@ -12,7 +16,7 @@ def get_context(context):
     context.show_sidebar = 1
 
     cur_user = frappe.session.user
-    
+
     if cur_user=="Guest":
         frappe.throw( ("You have to login as a member access this page"), frappe.PermissionError)
     else:
@@ -37,6 +41,8 @@ def get_context(context):
 
         today = datetime.date.today()
         event_ids = [event[0] for event in registered_event_ids]
+
+        context.restriction = get_restriction_details()
 
         context.registered_events = frappe.db.get_list('TinkerHub Event',
                                     filters={

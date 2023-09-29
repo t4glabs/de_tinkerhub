@@ -41,7 +41,8 @@
   "publish_learner_page_section",
   "is_published",
   "route",
-  "skill_list"
+  "skill_list",
+  "restrict_profile"
  ],
  "fields": [
   {
@@ -99,6 +100,7 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "College",
+   "mandatory_depends_on": "eval:doc.college_student=='Yes';",
    "options": "College"
   },
   {
@@ -214,13 +216,19 @@
    "label": "User",
    "options": "User",
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "restrict_profile",
+   "fieldtype": "Check",
+   "label": "Restrict Profile"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-09-27 15:31:02.150214",
+ "modified": "2023-09-29 15:21:18.115796",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "Learner",

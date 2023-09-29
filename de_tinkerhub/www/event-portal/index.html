@@ -9,7 +9,8 @@
 {% block title %}{{ _("Event Details Events") }}{% endblock %}
 
 {% block page_content %}
-<h1>Event Details Page</h1>   
+
+<h2>{{event.title}}</h2>
 
 <h4>Event registrants</h4>
 {% if registrants %} 
@@ -17,7 +18,9 @@
     <tr>
       <th>Email</th>
       <th>Participant</th>
+      {% if event.skills %}
       <th>Add Skill</th>
+      {% endif %}
     </tr>
     {%- for registrant in registrants %}   
     <tr>
@@ -26,7 +29,9 @@
       {%- set skill_disabled = not participant_checkbox %}
       <td>{{ registrant.email }}</td> 
       <td><input type="checkbox" name="email" value="{{ registrant.email }}" {% if participant_checkbox %}checked{% endif %}></td>
+      {% if event.skills %}
       <td><input type="checkbox" class="skill" name="skilled" value="{{ registrant.email }}" {% if skill_checkbox %}checked{% endif %} {% if skill_disabled %}disabled{% endif %}></td>
+      {% endif %}
     </tr> 
     {% endfor %}
   </table>

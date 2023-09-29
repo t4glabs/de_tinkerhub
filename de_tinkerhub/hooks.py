@@ -52,7 +52,10 @@ website_route_rules = [
 ]
 
 website_redirects = [
-    {"source": "/learner", "target": f"/learner/{frappe.session.user}"}
+    {"source": "/learner", "target": f"/learner/{frappe.session.user}"},
+    {"source": "/event-creation/list", "target": f"/event-creation/new"},
+    # {"source": "/index", "target": f"/upcoming-events"},
+    {"source": "", "target": f"/upcoming-events"}
 ]
 
 # Generators
@@ -233,3 +236,9 @@ website_route_rules = [
 # permission_query_conditions = {
 # 	"Feedback Submission": "frappe.desk.doctype.feedback_submission.feedback_submission.get_permission_query_conditions"
 # }
+
+profile_mandatory_fields = [
+	"full_name",
+	"mobile_no",
+	"college_student"
+]

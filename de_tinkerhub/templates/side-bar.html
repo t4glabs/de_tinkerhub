@@ -1,6 +1,7 @@
+{% if not restriction %}
+
 <div class="web-sidebar">
-    
-    
+  
     <div class="sidebar-items">
 
         {% if frappe.session.user=='Guest' %}
@@ -12,7 +13,6 @@
                 <a href="/login" class="active">Login</a>
             </li> 
         </ul>
-
         {% else %}
         <ul class="list-unstyled">
             
@@ -44,7 +44,10 @@
         </ul>
         {% endif %}
     </div>
+  
 </div>
+
+{% endif %}
 
 <script>
     frappe.ready(function () {
