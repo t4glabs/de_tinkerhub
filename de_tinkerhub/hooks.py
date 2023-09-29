@@ -54,7 +54,7 @@ website_route_rules = [
 website_redirects = [
     {"source": "/learner", "target": f"/learner/{frappe.session.user}"},
     {"source": "/event-creation/list", "target": f"/event-creation/new"},
-    # {"source": "/index", "target": f"/upcoming-events"},
+    {"source": "/index", "target": f"/upcoming-events"},
     {"source": "", "target": f"/upcoming-events"}
 ]
 
