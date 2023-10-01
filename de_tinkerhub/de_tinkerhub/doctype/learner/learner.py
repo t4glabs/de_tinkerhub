@@ -33,42 +33,21 @@ class Learner(WebsiteGenerator):
 				self.user = self.email
 
 	def on_update(self):
-
-		if  self.college_student and self.mobile_no and self.full_name:
-			print(f'\n\n\n no rest \n\n')
-
-			frappe.db.set_value('Learner', self.name, 'restrict_profile', '0')
-		else:
-			print(f'\n\n\n yes rest \n\n')
-			frappe.db.set_value('Learner', self.name, 'restrict_profile', '1')
-
-		# rest.save(ignore_permissions=True)
+		restrict_profile = '1'	
+		if self.college_student and self.mobile_no and self.full_name:
+			restrict_profile = '0'
+			
+		frappe.db.set_value('Learner', self.name, 'restrict_profile', restrict_profile)
 		frappe.db.commit()
-	
-		# if self.restrict_profile:
-		# 	if  self.college_student and self.mobile_no and self.full_name:
-		# 		self.restrict_profile = 0
-		# 	else:
-		# 		self.restrict_profile
-		
-		# if not self.restrict_profile:
-		# 	if  self.college_student and self.mobile_no and self.full_name:
-		# 		self.restrict_profile
-		# 	else:
-		# 		self.restrict_profile = 1
 
-		
+# 		old_doc = self.get_doc_before_save()
+
+
+
+
 	
-		# if self.college:
-		# 	college = self.college
-		# 	campus_lead = frappe.get_doc({
-		# 		'doctype': 'Learner',
-		# 		'filters': {
-		# 			'college': college,
-		# 			'is_lead': 1
-		# 		}
-		# 	})		
-		
+	
+
 
 	
 

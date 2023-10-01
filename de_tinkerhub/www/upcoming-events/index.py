@@ -8,18 +8,16 @@ from de_tinkerhub.de_tinkerhub.utils import (
 
 
 def get_context(context):
+    events = []
 
     user_roles = frappe.get_roles()
     if 'Event Admin' in user_roles:
         context.event_admin = True
     else:
         context.event_admin = False
-     
-    events = []
 
-    context.restriction = get_restriction_details()
-
-    print(f'\n\n\n rest {get_restriction_details()} \n\n')
+    restriction = get_restriction_details()
+    context.restriction = restriction
 
     query = frappe.db.sql_list(f"""
     SELECT te.name

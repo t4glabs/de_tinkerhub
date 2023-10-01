@@ -58,6 +58,12 @@ website_redirects = [
     {"source": "", "target": f"/upcoming-events"}
 ]
 
+role_home_page = {
+    "Learner": "upcoming-events",
+    "Event Admin": "upcoming-events",
+    "Administrator": "desk"
+}
+
 # Generators
 # ----------
 

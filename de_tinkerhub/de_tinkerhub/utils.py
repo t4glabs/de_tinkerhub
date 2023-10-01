@@ -19,7 +19,6 @@ cur_user = frappe.session.user
 
 def get_restriction_details():
 	user = frappe.db.get_value(
-		"Learner", cur_user, "restrict_profile"
+		"Learner", frappe.session.user, "restrict_profile"
 	)
-	print(f'\n\n\n deet {cur_user,user} \n\n')
 	return user

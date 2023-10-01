@@ -92,6 +92,7 @@ def part(event, registrants, participants, skilledParticipants):
 @frappe.whitelist(allow_guest=True)
 def edit_doc(docname, field_value):
     doc = get_doc('Event Registration', docname)
+    doc.reload()
     doc.is_participant = field_value
     doc.save(ignore_permissions=True)
     frappe.db.commit()
@@ -99,6 +100,7 @@ def edit_doc(docname, field_value):
 @frappe.whitelist(allow_guest=True)
 def edit_skill(docname, field_value):
     doc = get_doc('Event Registration', docname)
+    doc.reload()
     doc.add_skill = field_value
     doc.save(ignore_permissions=True)
     frappe.db.commit()
