@@ -20,7 +20,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-09-29 14:08:52.246761",
+ "modified": "2023-10-02 00:31:09.967643",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "learner-registration",
@@ -31,7 +31,7 @@
  "show_list": 0,
  "show_sidebar": 1,
  "success_message": "Profile updated successfully!",
- "success_url": "http://t4g.tinker.com:8002/learner-profile",
+ "success_url": "http://54.95.13.232/learner-profile",
  "title": "Learner Profile",
  "web_form_fields": [
   {

@@ -1,6 +1,8 @@
 import frappe
 import datetime
 
+no_cache = 1
+no_sitemap = 1
 
 from de_tinkerhub.de_tinkerhub.utils import (
 	get_restriction_details

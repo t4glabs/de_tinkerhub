@@ -2,7 +2,8 @@ import frappe
 from frappe import _
 from frappe import get_doc 
 
-
+no_cache = 1
+no_sitemap = 1
 
 def get_context(context):
     user_roles = frappe.get_roles()
