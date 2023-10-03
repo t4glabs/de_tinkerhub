@@ -77,8 +77,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Category",
-   "options": "Category",
-   "reqd": 1
+   "options": "Category"
   },
   {
    "depends_on": "eval:doc.type=='Offline';",
@@ -262,7 +261,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2023-09-29 10:40:16.282974",
+ "modified": "2023-10-03 07:14:15.739783",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "TinkerHub Event",

@@ -19,12 +19,14 @@
             <li class="sidebar-item">
                 <a href="/upcoming-events" class="active">Upcoming Events</a>
             </li>
+            {% if not frappe.session.user=='Administrator'%}
             <li class="sidebar-item">
                 <a href="/my-events" class="active">My Events</a>
             </li>
             <li class="sidebar-item">
                 <a href="/learner-profile" class="active">My Profile</a>
             </li>
+            {% endif %}
             <!-- <li class="sidebar-item">
                 <a href="/learner/{{frappe.session.user}}" class="active">Public Profile</a>
             </li> -->
@@ -34,13 +36,19 @@
             <li class="sidebar-item">
                 <a href="/admin-portal" class="active">Admin Portal</a>
             </li>
+            {% if not frappe.session.user=='Administrator'%}
             <li class="sidebar-item">
                 <a href="/event-creation/new" class="active">Create Event</a>
             </li>
             {% endif %}
-            <!-- <li class="sidebar-item">
-                <a href="/me" class="active">My Account</a>
-            </li>   -->
+            {% endif %}
+
+            {% if frappe.session.user=='Administrator' %}
+            <li class="sidebar-item">
+                <a href="/tinkerhub-event/new" class="active">Create Event</a>
+            </li>
+            {% endif %}
+
         </ul>
         {% endif %}
     </div>
