@@ -10,6 +10,14 @@
 
 {% block page_content %}
 
+<div class="breadcrumb">
+  <a class="dark-links" href="/admin-portal">{{ _("Admin Portal") }}</a>
+  <img class="ml-1 mr-1" src="/assets/lms/icons/chevron-right.svg">
+  <span class="breadcrumb-destination">{{ event.title  }}</span>
+  <img class="ml-1 mr-1" src="/assets/lms/icons/chevron-right.svg">
+  <span class="breadcrumb-destination"> Registrants </span>
+</div>
+
 <h2>{{event.title}}</h2>
 
 <h4>Event registrants</h4>

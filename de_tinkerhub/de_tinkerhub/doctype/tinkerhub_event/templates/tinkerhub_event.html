@@ -8,6 +8,16 @@
 
 {% block page_content %}
 
+<div class="breadcrumb">
+    {% if registrant %}
+    <a class="dark-links" href="/upcoming-events">{{ _("My Events") }}</a>
+    {% else %}
+    <a class="dark-links" href="/my-events">{{ _("Upcoming Events") }}</a>
+    {% endif %}
+    <img class="ml-1 mr-1" src="/assets/lms/icons/chevron-right.svg">
+    <span class="breadcrumb-destination">{{ title  }}</span>
+</div>
+
 {% if event_poster %}
 <img style="width:500px;" src="{{event_poster}}" >
 {% endif %}

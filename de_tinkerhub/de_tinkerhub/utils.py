@@ -22,3 +22,8 @@ def get_restriction_details():
 		"Learner", frappe.session.user, "restrict_profile"
 	)
 	return user
+
+def add_nav(context, title, href):
+	"""Adds a breadcrumb to the navigation."""
+	nav = context.setdefault("nav", [])
+	nav.append({"title": title, "href": href})
