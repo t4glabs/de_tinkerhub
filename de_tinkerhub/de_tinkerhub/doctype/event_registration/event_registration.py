@@ -11,10 +11,10 @@ class EventRegistration(Document):
     
     def on_update(self):
         # Get the previous version of the document before the update
-        learner = frappe.get_doc("Learner", self.email)
+        learner = ''
         # Fetch existing skills and events of the learner
         if frappe.db.exists("Learner", self.email):
-
+            learner = frappe.get_doc("Learner", self.email)
             existing_skills = [skill.skill for skill in learner.my_skills]
             existing_events = [event.event for event in learner.my_events]
 
@@ -24,7 +24,7 @@ class EventRegistration(Document):
             
         
         old_doc = self.get_doc_before_save()
-        if old_doc:
+        if old_doc and learner:
             if old_doc.is_participant != self.is_participant:
                 if self.is_participant:
                     if self.event not in existing_events:
