@@ -6,7 +6,9 @@
     {% endblock %}
 </div>
 
+
 {% block page_content %}
+<div id="content"></div>
 <h1>{{ title }}</h1>
 
 {% if college %}
@@ -22,6 +24,7 @@
 {% if github %}
 <h3> Github : <a href="{{github}}">Click Here </a></h3> 
 {% endif %}
+</div>
 
 {% endblock %}
 

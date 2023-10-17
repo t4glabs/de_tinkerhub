@@ -20,7 +20,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2023-10-02 00:31:09.967643",
+ "modified": "2023-10-10 10:40:05.965918",
  "modified_by": "Administrator",
  "module": "De Tinkerhub",
  "name": "learner-registration",
@@ -83,7 +83,7 @@
    "max_value": 0,
    "options": "",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -109,7 +109,7 @@
    "max_value": 0,
    "options": "\nYes\nNo",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {

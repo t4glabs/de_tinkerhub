@@ -52,15 +52,14 @@ website_route_rules = [
 ]
 
 website_redirects = [
-    {"source": "/learner", "target": f"/learner/{frappe.session.user}"},
     {"source": "/event-creation/list", "target": f"/event-creation/new"},
     {"source": "/index", "target": f"/upcoming-events"},
     {"source": "", "target": f"/upcoming-events"}
 ]
 
 role_home_page = {
-    "Learner": "upcoming-events",
-    "Event Admin": "upcoming-events",
+    "Learner": "/upcoming-events",
+    "Campus Lead": "/index",
     "Administrator": "desk"
 }
 
@@ -130,10 +129,10 @@ doc_events = {
     },
     "User":{
         "after_insert":"de_tinkerhub.de_tinkerhub.learner_creation.on_user_signup"
+    },
+    "User":{
+        "on_update":"de_tinkerhub.de_tinkerhub.lead_role.on_lead_role"
     }
-    # "User":{
-    #     "on_update":"de_tinkerhub.de_tinkerhub.lead_role.on_lead_role"
-    # }
 }
 
 # Scheduled Tasks

@@ -81,7 +81,6 @@ frappe.ready(function() {
 })
 
 function check(e){
-
 	if (!(window.location.pathname.endsWith("/new"))){
 		let url = window.location.href,
 		event_s = url.split('/')[4]
